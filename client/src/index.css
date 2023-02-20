@@ -11,6 +11,10 @@
   color: red;
 }
 
+.desc {
+  color: #0068e9;
+}
+
 input,
 textarea {
   border: 1px solid #ccc;

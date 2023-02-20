@@ -39,7 +39,7 @@ function Comment({ comment, getData }) {
           <h1 className="font-bold text-gray-600">{comment.user.name}</h1>
         </div>
 
-        {currentUser._id === comment.user._id && <i class="ri-delete-bin-line" onClick={deleteComment}></i>}
+        {currentUser._id === comment.user._id && <i className="ri-delete-bin-line" onClick={deleteComment}></i>}
       </div>
       <hr />
       <div>

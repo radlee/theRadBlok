@@ -176,8 +176,9 @@ function BlogDescription() {
         )}
         <h1 className="text-2xl font-bold text-primary">{blog?.title}</h1>
         <hr />
-        <h1>{blog?.description}</h1>
-        <div>{ReactHtmlParser(draftToHtml(JSON.parse(blog?.content)))}</div>
+        <h1 className="desc font-bold">{blog?.description}</h1>
+        <hr />
+        <div className="gap-5">{ReactHtmlParser(draftToHtml(JSON.parse(blog?.content)))}</div>
 
         <hr />
 
@@ -200,7 +201,7 @@ function BlogDescription() {
               <span>{blog.likesCount}</span>
             </div>
             <div className="flex gap-1 items-center cursor-pointer">
-              <i class="ri-chat-1-line"></i>
+              <i className="ri-chat-1-line"></i>
               <span>{blog.commentsCount}</span>
             </div>
             <div
@@ -210,7 +211,7 @@ function BlogDescription() {
                 setShowComments(false);
               }}
             >
-              <i class="ri-share-forward-line"></i>
+              <i className="ri-share-forward-line"></i>
               <span>{blog.sharesCount}</span>
             </div>
           </div>

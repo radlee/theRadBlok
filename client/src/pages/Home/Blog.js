@@ -13,7 +13,7 @@ function Blog({ blog }) {
     >
       <h1 className="text-primary text-xl font-bold">{blog.title}</h1>
       <hr />
-      <p className="font-bold">{blog.description}</p>
+      <p className="font-bold desc">{blog.description}</p>
       <hr />
 
       <div className="flex justify-between items-center">
@@ -29,11 +29,11 @@ function Blog({ blog }) {
             <span>{blog.likesCount}</span>
           </div>
           <div className="flex gap-1 items-center">
-            <i class="ri-chat-1-line"></i>
+            <i className="ri-chat-1-line"></i>
             <span>{blog.commentsCount}</span>
           </div>
           <div className="flex gap-1 items-center">
-            <i class="ri-share-forward-line"></i>
+            <i className="ri-share-forward-line"></i>
             <span>{blog.sharesCount}</span>
           </div>
         </div>
