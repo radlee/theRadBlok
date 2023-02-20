@@ -8,11 +8,11 @@
 }
 
 .rad {
-  color: red;
+  color: #fa1313;
 }
 
 .desc {
-  color: #0068e9;
+  color: #fa1313;  /* #0068e9; */
 }
 
 input,
