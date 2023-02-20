@@ -13,7 +13,7 @@ function Blog({ blog }) {
     >
       <h1 className="text-primary text-xl font-bold">{blog.title}</h1>
       <hr />
-      <p>{blog.description}</p>
+      <p className="font-bold">{blog.description}</p>
       <hr />
 
       <div className="flex justify-between items-center">

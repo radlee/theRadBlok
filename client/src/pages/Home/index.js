@@ -36,7 +36,7 @@ function Home() {
   return (
     <div>
       <div className="flex justify-between">
-        <h1 className="text-primary uppercase text-2xl font-bold">
+        <h1 className="text-primary text-1xl font-bold">
           Welcome {currentUser.name} !
         </h1>
 

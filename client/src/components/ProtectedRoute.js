@@ -15,7 +15,7 @@ import { io } from "socket.io-client";
 const socket = io("https://radblok.onrender.com/");
 
 function ProtectedRoute({ children }) {
-  const { currentUser, notifications, unreadCount } = useSelector(
+  const { currentUser, unreadCount } = useSelector(
     (state) => state.usersReducer
   );
   const dispatch = useDispatch();
