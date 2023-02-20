@@ -7,6 +7,10 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
+.rad {
+  color: red;
+}
+
 input,
 textarea {
   border: 1px solid #ccc;

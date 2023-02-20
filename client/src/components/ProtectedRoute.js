@@ -81,10 +81,10 @@ function ProtectedRoute({ children }) {
       <div className="p-5">
         <div className="bg-primary w-full p-5 justify-between flex rounded items-center">
           <h1
-            className="text-white text-2xl font-bold uppercase cursor-pointer"
+            className="text-white text-2xl font-bold cursor-pointer"
             onClick={() => navigate("/")}
           >
-            radBlok
+            <span className="rad">rad</span>Blok
           </h1>
 
           <div className="bg-white rounded p-2 flex gap-2 items-center font-semibold text-primary">
