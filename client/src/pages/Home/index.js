@@ -51,7 +51,7 @@ function Home() {
       <div style={{width: '50%', margin: 'auto'}}>
         <Grid className="landing-grid">
           <Cell col={6}>
-            <img src={process.env.PUBLIC_URL + 'radblok_png_logo.png'} />
+            <img src={process.env.PUBLIC_URL + 'radblok.png'} />
           </Cell>
         </Grid>
       </div>
