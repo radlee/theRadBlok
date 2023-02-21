@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { GetAllBlogs } from "../../apicalls/blogs";
 import Blog from "./Blog";
+import { Grid, Cell } from 'react-mdl';
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -45,6 +46,14 @@ function Home() {
           variant="primary-outlined"
           onClick={() => navigate("/add-blog")}
         />
+      </div>
+
+      <div style={{width: '50%', margin: 'auto'}}>
+        <Grid className="landing-grid">
+          <Cell col={6}>
+            <img src={process.env.PUBLIC_URL + 'radblok_png_logo.png'} />
+          </Cell>
+        </Grid>
       </div>
 
       <div className="grid lg:grid-cols-2 xl:grid-cols-2 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
