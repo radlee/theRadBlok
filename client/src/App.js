@@ -10,6 +10,7 @@ import AddEditBlog from "./pages/AddEditBlog";
 import BlogDescription from "./pages/BlogDesc";
 import Profile from "./pages/Profile";
 import Notifications from "./pages/Notifications";
+import Footer from "./components/Footer";
 
 function App() {
   const { loading } = useSelector((state) => state.loadersReducer);
@@ -71,6 +72,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
