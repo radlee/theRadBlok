@@ -12,7 +12,7 @@
 }
 
 .description {
-  background-color: #4c4c4c;
+  background-color: #546ba5;
   padding: 20px;
 }
 
@@ -35,7 +35,7 @@ textarea:focus {
 }
 
 .primary-contained-btn {
-  background-color: #395144;
+  background-color: #464646;
   height: 40px;
   padding: 0 20px;
   color: white;

@@ -7,10 +7,14 @@ import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { GetAllBlogs } from "../../apicalls/blogs";
 import Blog from "./Blog";
 import { Grid, Cell } from 'react-mdl';
+import Pagination from "../../components/Pagination";
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
   const { currentUser } = useSelector((state) => state.usersReducer);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(4);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,6 +37,11 @@ function Home() {
   useEffect(() => {
     getData();
   }, []);
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = blogs.slice(firstPostIndex, lastPostIndex);
+
 
   return (
     <div>
@@ -57,10 +66,20 @@ function Home() {
         />
 
       <div className="grid lg:grid-cols-2 xl:grid-cols-2 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
-        {blogs.map((blog) => (
+        {currentPosts.map((blog) => (
           <Blog key={blog._id} blog={blog} />
         ))}
       </div>
+      <hr />
+      <br />
+      <Pagination 
+        totalPosts={blogs.length} 
+        postsPerPage={postsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <br />
+      <hr />
     </div>
   );
 }
