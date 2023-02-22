@@ -11,6 +11,11 @@
   color: #fa1313;
 }
 
+.description {
+  background-color: #4c4c4c;
+  padding: 20px;
+}
+
 .desc {
   color: #fa1313;  /* #0068e9; */
 }

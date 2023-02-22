@@ -11,7 +11,9 @@ function Blog({ blog }) {
         navigate(`/blog-desc/${blog._id}`);
       }}
     >
-      <h1 className="text-primary text-xl font-bold">{blog.title}</h1>
+      <div className="description">
+        <h1 className="text-white text-xl font-bold">{blog.title}</h1>
+      </div>
       <hr />
       <p className="font-bold desc">{blog.description}</p>
       <hr />
