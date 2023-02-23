@@ -11,8 +11,13 @@
   color: #fa1313;
 }
 
+.blak {
+  color: #fff;
+}
+
+
 .description {
-  background-color: #111827;
+  background-color: #bf0c0c;
   padding: 20px;
 }
 
