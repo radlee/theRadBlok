@@ -79,7 +79,7 @@ function ProtectedRoute({ children }) {
   return (
     currentUser && (
       <div className="p-5">
-        <div className="bg-primary w-full p-5 justify-between flex rounded items-center">
+        <div className="bg-primary border-b-4 border-red-500  w-full p-5 justify-between flex rounded items-center">
           <h1
             className="text-white text-2xl font-bold cursor-pointer"
             onClick={() => navigate("/")}
