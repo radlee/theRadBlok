@@ -7,13 +7,17 @@ import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { GetAllBlogs } from "../../apicalls/blogs";
 import Blog from "./Blog";
 import { Grid, Cell } from 'react-mdl';
-import Pagination from "../../components/Pagination";
+import { Pagination } from 'antd';
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
   const { currentUser } = useSelector((state) => state.usersReducer);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(4);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postsPerPage, setPostsPerPage] = useState(4);
+
+  const [total, setTotal] = useState("");
+  const [page, setPage] = useState(1);
+  const [blogsPerPage, setBlogsPerPage] = useState(4);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,6 +28,7 @@ function Home() {
       const response = await GetAllBlogs();
       if (response.success) {
         setBlogs(response.data);
+        setTotal(response.data.length)
       } else {
         toast.error(response.message);
       }
@@ -38,10 +43,24 @@ function Home() {
     getData();
   }, []);
 
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = blogs.slice(firstPostIndex, lastPostIndex);
+  const indexOfLastPage = page * blogsPerPage;
+  const indexOfFirstPage = indexOfLastPage - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstPage, indexOfLastPage);
 
+  const onShowSizeChange = (current, pageSize) => {
+    setBlogsPerPage(pageSize);
+  }
+
+  const itemRender = (current, type, originalElement) => {
+    if(type === 'prev') {
+      return <a>Previous</a>
+    }
+    if(type === 'next') {
+      return <a>Next</a>
+    }
+
+    return originalElement;
+  }
 
   return (
     <div>
@@ -66,17 +85,21 @@ function Home() {
         />
 
       <div className="grid lg:grid-cols-2 xl:grid-cols-2 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
-        {currentPosts.map((blog) => (
+        {currentBlogs.map((blog) => (
           <Blog key={blog._id} blog={blog} />
         ))}
       </div>
       <hr />
       <br />
       <Pagination 
-        totalPosts={blogs.length} 
-        postsPerPage={postsPerPage}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
+        onChange={(value) => setPage(value)}
+        pageSize={blogsPerPage}
+        total={total}
+        current={page}
+        showSizeChanger
+        showQuickJumper
+        onShowSizeChange={onShowSizeChange}
+        itemRender={itemRender}
       />
       <br />
       <hr />
