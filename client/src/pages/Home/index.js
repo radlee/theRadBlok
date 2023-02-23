@@ -61,7 +61,7 @@ function Home() {
 
       <Button
           title="Add Blog"
-          variant="primary-contained"
+          variant="primary-outlined"
           onClick={() => navigate("/add-blog")}
         />
 
