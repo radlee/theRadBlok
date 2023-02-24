@@ -5,14 +5,15 @@ import { useNavigate } from "react-router-dom";
 function Blog({ blog }) {
   const navigate = useNavigate();
   return (
+    <div className="">
     <div
-      className="border shadow p-5 flex flex-col gap-3 cursor-pointer"
+      className="border shadow p-5 flex space-x-4 flex-col gap-3 cursor-pointer "
       onClick={() => {
         navigate(`/blog-desc/${blog._id}`);
       }}
     >
-      <div className="description border-b-4  border-tertiary">
-        <h1 className="text-white text-xl font-bold">{blog.title}</h1>
+      <div className="description border-b-4  border-red">
+        <h1 className="text-black text-xl font-bold">{blog.title}</h1>
       </div>
       <hr />
       <p className="font-bold desc">{blog.description}</p>
@@ -40,6 +41,7 @@ function Blog({ blog }) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
