@@ -34,7 +34,8 @@ function Register() {
 
   return (
     <div className="flex justify-center h-screen items-center bg-primary reg-bg">
-      <div className="bg-white p-5 w-[380px]">
+      <div className=" register-white p-5 w-[380px]">
+      <img src={process.env.PUBLIC_URL + 'rblog.png'} />
         <div className="flex flex-col gap-5">
           <h1 className="text-2xl font-bold text-center text-primary">
             <span className="rad">rad</span>Blok - Register
@@ -71,7 +72,7 @@ function Register() {
             }
           />
 
-          <Link to="/login" className="text-center text-primary underline">
+          <Link to="/login" className="text-center text-white underline">
             Already have an account? Login
           </Link>
         </div>

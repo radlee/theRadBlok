@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Blog({ blog }) {
   const navigate = useNavigate();
   return (
-    <div className="">
+    <div className="container">
     <div
       className="border shadow p-5 flex space-x-4 flex-col gap-3 cursor-pointer "
       onClick={() => {
