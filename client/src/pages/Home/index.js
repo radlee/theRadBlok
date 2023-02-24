@@ -67,13 +67,17 @@ function Home() {
         </h1>
       </div>
 
-      <div style={{width: '50%', margin: 'auto'}}>
+      <br />
+
+      <div className="shadow" style={{width: '50%', margin: 'auto'}}>
         <Grid className="landing-grid">
           <Cell col={6}>
-            <img src={process.env.PUBLIC_URL + 'radblok.gif'} />
+            <img src={process.env.PUBLIC_URL + 'radblok.png'} />
           </Cell>
         </Grid>
       </div>
+
+      <br />
 
       <Button
           title="Add Blog"
