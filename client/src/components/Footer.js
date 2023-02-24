@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="p-4 bg-gray-100 rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+    <footer className="p-4 bg-secondary rounded-lg shadow">
     <div className="sm:flex sm:items-center sm:justify-between">
         <a href="https://radblok.onrender.com/" class="flex items-center mb-4 sm:mb-0">
             <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/6fa667164144457.63f722cd450d7.png" className="h-28 mr-3" alt="radBlok Logo" />
