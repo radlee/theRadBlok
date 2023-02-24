@@ -7,6 +7,24 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
+.login-bg{
+  background-image: url('../public/login.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.footer {
+  background: #ffffff88 !important;
+}
+
+.reg-bg{
+  background-image: url('../public/bgreg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .rad {
   color: #fa1313;
 }
