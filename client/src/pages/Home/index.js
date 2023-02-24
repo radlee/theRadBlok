@@ -12,12 +12,9 @@ import { Pagination } from 'antd';
 function Home() {
   const [blogs, setBlogs] = useState([]);
   const { currentUser } = useSelector((state) => state.usersReducer);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [postsPerPage, setPostsPerPage] = useState(4);
-
   const [total, setTotal] = useState("");
   const [page, setPage] = useState(1);
-  const [blogsPerPage, setBlogsPerPage] = useState(4);
+  const [blogsPerPage, setBlogsPerPage] = useState(6);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
