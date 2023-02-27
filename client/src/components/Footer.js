@@ -8,7 +8,7 @@ function Footer() {
   class="p-5 footer">
      <a href="https://radblok.onrender.com/" class="flex items-center mb-4 sm:mb-0">
             <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/6fa667164144457.63f722cd450d7.png" className="h-28 mr-3" alt="radBlok Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">< span className="rad">rad</span><span className="blak">blok</span></span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">< span className="rad">rad</span><span className="blak">Blok</span></span>
         </a>
 
   <div class="p-4 text-center text-neutral-700 dark:text-neutral-200">
