@@ -32,7 +32,7 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center h-screen items-center bg-primary login-bg">
+    <div className="flex justify-center h-screen items-center login-bg">
       
       <div className=" login-white p-5 w-[380px]">
         <img src={process.env.PUBLIC_URL + 'rblog.png'} />
@@ -61,7 +61,7 @@ function Login() {
             disabled={user.email.length < 3 || user.password.length < 3}
           />
 
-          <Link to="/register" className="text-center text-white underline">
+          <Link to="/register" className="text-center text-primary underline">
             Don't have an account? Register
           </Link>
         </div>

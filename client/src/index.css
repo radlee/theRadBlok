@@ -7,23 +7,10 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
-.login-bg{
-  background-image: url('../public/login.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 .footer {
   background: #ffffff0e;
 }
 
-.reg-bg{
-  background-image: url('../public/bgreg.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
 
 .login-white, .register-white {
   background-color: rgba(255, 255, 255, 0);
@@ -34,7 +21,7 @@
 }
 
 .blak {
-  color: #000000;
+  color: #fcfcfc;
 }
 
 
