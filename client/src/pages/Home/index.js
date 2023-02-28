@@ -72,7 +72,7 @@ function Home() {
       <div className="shadow" style={{width: '50%', margin: 'auto'}}>
         <Grid className="landing-grid">
           <Cell col={6}>
-            <img src={process.env.PUBLIC_URL + 'radblok.png'} />
+            <img src={process.env.PUBLIC_URL + 'radblok.png'} alt="landing logo"/>
           </Cell>
         </Grid>
       </div>

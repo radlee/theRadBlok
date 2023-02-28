@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { LoginUser } from "../../apicalls/users";
 import { toast } from "react-hot-toast";
@@ -35,7 +35,7 @@ function Login() {
     <div className="flex justify-center h-screen items-center login-bg">
       
       <div className=" login-white p-5 w-[380px]">
-        <img src={process.env.PUBLIC_URL + 'rblog.png'} />
+        <img src={process.env.PUBLIC_URL + 'rblog.png'} alt="login logo"/>
         <div className="flex flex-col gap-5">
           <h1 className="text-2xl font-bold text-center text-primary">
           <span className="rad">rad</span>Blok - Login
