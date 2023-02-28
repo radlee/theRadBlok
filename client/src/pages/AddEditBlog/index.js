@@ -116,6 +116,7 @@ function AddEditBlog() {
             }}
             editorStyle={{
               border: "1px solid #ccc",
+              lineHeight: '75%',
               minHeight: "200px",
               padding: "10px",
               
