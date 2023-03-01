@@ -3,7 +3,7 @@
   "name": "radBlok - Blogger's Republic",
   "icons": [
     {
-      "src": "maskable.png",
+      "src": "mask.png",
       "sizes": "196x196",
       "type": "image/png",
       "purpose": "any maskable"
