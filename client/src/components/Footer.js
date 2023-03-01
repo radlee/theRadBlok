@@ -13,7 +13,7 @@ function Footer() {
 
   <div className="p-4 text-center text-neutral-700 dark:text-neutral-200">
     <a
-      className="text-neutral-800 dark:text-neutral-400"
+      className="dark:text-neutral-300 dark:text-neutral-400"
       href="https://radblok.onrender.com/"
       > Blogger's Republic.</a
     >
