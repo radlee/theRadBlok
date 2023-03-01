@@ -10,23 +10,23 @@ function Profile() {
   const [activeTab, setActiveTab] = React.useState(0);
   const tabs = [
     {
-      name: "My Blogs",
+      name: "Blogs",
       component: <MyBlogs />,
     },
     {
-      name: "Blogs Shared To Me",
+      name: "Shared To Me",
       component: <SharedToMe />,
     },
     {
-      name: "Liked Blogs",
+      name: "Liked",
       component: <Liked />,
     },
     {
-      name: "Commented Blogs",
+      name: "Commented",
       component: <Commented />,
     },
     {
-      name: "Shared Blogs",
+      name: "Shared",
       component: <Shared />,
     },
   ];

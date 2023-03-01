@@ -7,6 +7,16 @@
   font-family: "Montserrat", sans-serif !important;
 }
 
+.heading {
+  background-color: #bf0c0c;
+  padding: 20px;
+  /* font-family: 'Great Vibes' !important; */
+  font-family: 'Carter One' !important;
+  letter-spacing: 5px;;
+  color: #ffffff;
+  line-height: 2.5;
+}
+
 .footer {
   background: #ffffff0e;
 }

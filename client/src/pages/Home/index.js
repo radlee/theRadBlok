@@ -78,6 +78,17 @@ function Home() {
       </div>
 
       <br />
+      <br />
+
+      <h1 className="text-5xl font-black text-center border-l-8  border-primary"><span className="heading"> "Online Platform for Publishing Written Content." </span></h1>
+
+      <br />
+      <br />
+
+      <hr />
+
+      <br />
+      <br />
 
       <Button
           title="Add Blog"

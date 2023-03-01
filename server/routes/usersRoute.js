@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
 
     res.send({
       success: true,
-      message: "User Registered Successfully , Please login to continue",
+      message: "Registered Successfully , Please login to continue",
     });
   } catch (error) {
     res.send({
@@ -76,7 +76,7 @@ router.post("/login", async (req, res) => {
     // send the token to the client
     res.send({
       success: true,
-      message: "User logged in successfully",
+      message: "Logged in successfully",
       data: token,
     });
   } catch (error) {
