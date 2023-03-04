@@ -61,21 +61,21 @@ function Home() {
 
   return (
     <div>
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <h1 className="text-primary text-1xl font-bold">
           Welcome {currentUser.name} !
         </h1>
-      </div>
+      </div> */}
 
       <br />
 
-      <div className="shadow" style={{width: '50%', margin: 'auto'}}>
+      {/* <div className="shadow" style={{width: '50%', margin: 'auto'}}>
         <Grid className="landing-grid">
           <Cell col={6}>
             <img src={process.env.PUBLIC_URL + 'radblok.png'} alt="landing logo"/>
           </Cell>
         </Grid>
-      </div>
+      </div> */}
 
       <br />
       <br />
@@ -96,7 +96,7 @@ function Home() {
           onClick={() => navigate("/add-blog")}
         />
 
-      <div className="grid lg:grid-cols-2 xl:grid-cols-2 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
+      <div className="grid lg:grid-cols-3 xl:grid-cols-3 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
         {currentBlogs.map((blog) => (
           <Blog key={blog._id} blog={blog} />
         ))}
