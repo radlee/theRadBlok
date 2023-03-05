@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { RegisterUser } from "../../apicalls/users";
 import Button from "../../components/Button";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
+import FileBase64 from 'react-file-base64';
 
 function Register() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Register() {
     name: "",
     email: "",
     password: "",
+    profile: ""
   });
 
   const register = async () => {
@@ -20,6 +22,7 @@ function Register() {
       dispatch(ShowLoading());
       const response = await RegisterUser(user);
       if (response.success) {
+        console.log(user)
         toast.success(response.message);
         navigate("/login");
       } else {
@@ -61,6 +64,10 @@ function Register() {
             value={user.password}
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
+
+          <FileBase64
+              multiple={ false }
+              onDone={ ({base64}) => setUser({ ...user, profile: base64 })} />
 
           <Button
             title="Register"

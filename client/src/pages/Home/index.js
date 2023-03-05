@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
+import Profile from "../../components/Profile";
 import { toast } from "react-hot-toast";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { GetAllBlogs } from "../../apicalls/blogs";
@@ -18,7 +19,7 @@ function Home() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+console.log(currentUser)
   const getData = async () => {
     try {
       dispatch(ShowLoading());
@@ -61,21 +62,7 @@ function Home() {
 
   return (
     <div>
-      {/* <div className="flex justify-between">
-        <h1 className="text-primary text-1xl font-bold">
-          Welcome {currentUser.name} !
-        </h1>
-      </div> */}
-
       <br />
-
-      {/* <div className="shadow" style={{width: '50%', margin: 'auto'}}>
-        <Grid className="landing-grid">
-          <Cell col={6}>
-            <img src={process.env.PUBLIC_URL + 'radblok.png'} alt="landing logo"/>
-          </Cell>
-        </Grid>
-      </div> */}
 
       <br />
       <br />

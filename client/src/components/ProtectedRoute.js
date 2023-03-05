@@ -78,17 +78,22 @@ function ProtectedRoute({ children }) {
 
   return (
     currentUser && (
-      <div className="p-5">
-        <div className="bg-primary border-b-4 border-red  w-full p-5 justify-between flex rounded items-center">
-          <h1
-            className="text-white text-2xl font-bold cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            <span className="rad">rad</span>Blok
-          </h1>
+      <div className="p-5 ">
+      <nav class="bg-white px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+      <div class="container flex flex-wrap items-center justify-between mx-auto">
+      <div class="flex items-center  cursor-pointer" onClick={() => navigate("/")}>
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d8ab2f164464737.63f74bc45587e.png" class="h-9 mr-6 sm:h-12" alt="radBlok Logo" />
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><span className="rad">rad</span>Blok</span>
+      </div>
+      <div class="flex items-center md:order-2">
+          <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+           
+            <img class="w-10 h-10 rounded-full" src={currentUser.profile} alt="profile photo" />
+          </button>
 
-          <div className="bg-white rounded p-2 flex gap-2 items-center font-semibold text-primary">
-            <h1
+
+              <div className="bg-white rounded p-2 flex gap-2 items-center font-semibold text-primary">
+          <h1
               className="underline uppercase text-sm cursor-pointer"
               onClick={() => navigate("/profile")}
             >
@@ -113,10 +118,15 @@ function ProtectedRoute({ children }) {
               }}
             ></i>
           </div>
-        </div>
-
-        <div className="mt-5 overflow-scroll h-[85vh]">{children}</div>
       </div>
+     
+      </div>
+    </nav>
+
+    <div className="mt-5 overflow-scroll h-[85vh]">{children}</div>
+
+</div>
+    
     )
   );
 }
