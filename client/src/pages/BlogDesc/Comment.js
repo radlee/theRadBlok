@@ -32,21 +32,28 @@ function Comment({ comment, getData }) {
   return (
     <div className="bg-gray-100 border p-5 border-gray-300 flex flex-col gap-2 rounded">
       <div className="flex gap-2 items-center justify-between">
-        <div className="flex gap-2 items-center">
+        {/* <div className="flex gap-2 items-center">
           <h1 className="bg-gray-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-semibold">
             {comment.user.name[0].toUpperCase()}
           </h1>
           <h1 className="font-bold text-gray-600">{comment.user.name}</h1>
-        </div>
+        </div> */}
+        <div class="flex items-center space-x-4">
+    <img class="w-10 h-10 rounded-full" src={comment.user.profile} alt="profile" />
+    <div class="font-medium dark:text-white">
+        <div>{comment.user.name}</div>
+        <div class="text-sm text-gray-500 dark:text-gray-400">{moment(comment.createdAt).fromNow()}</div>
+    </div>
+</div>
 
         {currentUser._id === comment.user._id && <i className="ri-delete-bin-line" onClick={deleteComment}></i>}
       </div>
       <hr />
       <div>
         <h1>{comment.comment}</h1>
-        <h1 className="text-sm text-gray-500">
+        {/* <h1 className="text-sm text-gray-500">
           {moment(comment.createdAt).format("DD-MM-YYYY hh:mm:ss")}
-        </h1>
+        </h1> */}
       </div>
     </div>
   );
