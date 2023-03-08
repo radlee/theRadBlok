@@ -8,14 +8,22 @@ const usersRoute = require("./routes/usersRoute");
 const blogsRoute = require("./routes/blogsRoute");
 const blogActionsRoute = require("./routes/blogActionsRoute");
 
+
+app.use(express.json({limit: "50000mb", extended: true}))
+app.use(express.urlencoded({limit: "20000mb", extended: true, parameterLimit: 50000}))
+
 app.use(express.json());
 
 app.use("/api/users", usersRoute);
 app.use("/api/blogs", blogsRoute);
 app.use("/api/blog-actions", blogActionsRoute);
 
+
+
 const port = process.env.PORT || 5000;
 const server = require("http").createServer(app);
+
+
 
 // socket io
 const io = require("socket.io")(server, {
