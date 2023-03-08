@@ -15,7 +15,7 @@ function Footer() {
     <a
       className="text-neutral-800 dark:text-neutral-400"
       href="https://radblok.onrender.com/"
-      > Blogger's Republic.</a
+      > Blogger's Republic</a
     >
   </div>
   <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
