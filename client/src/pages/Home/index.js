@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
+import Profile from "../../components/Profile";
 import { toast } from "react-hot-toast";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { GetAllBlogs } from "../../apicalls/blogs";
@@ -18,7 +19,7 @@ function Home() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+console.log(currentUser)
   const getData = async () => {
     try {
       dispatch(ShowLoading());
@@ -66,7 +67,7 @@ function Home() {
       <br />
       <br />
 
-      <h1 className="text-5xl font-black text-center border-l-8  border-primary"><span className="heading">"Online Platform for Publishing Written Content."</span></h1>
+      <h1 className="text-5xl font-black text-center border-l-8  border-primary"><span className="heading"> "Online Platform for Publishing Written Content." </span></h1>
 
       <br />
       <br />
