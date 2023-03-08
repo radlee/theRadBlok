@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
   return (
 
-    <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8">
+    <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 text-center items-center">
     <div class="sm:flex sm:items-center sm:justify-between">
         <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
             <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/6fa667164144457.63f722cd450d7.png" class="h-8 mr-3" alt="Flowbite Logo" />
@@ -16,7 +16,7 @@ function Footer() {
   <a
       className="text-neutral-800 dark:text-neutral-400"
       href="https://radblok.onrender.com/"
-      > Blogger's Republic</a
+      > | Blogger's Republic | </a
     >
     
     </div>
