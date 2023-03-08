@@ -27,7 +27,7 @@ function Blog({ blog }) {
       <div className="flex justify-between items-center">
       
         <div class="flex items-center space-x-4">
-    <img class="w-10 h-10 rounded-full" src={blog.user.profile} alt="profile" />
+    
     <div class="font-medium dark:text-white">
         <div>{blog.user.name}</div>
         <div class="text-sm text-gray-500 dark:text-gray-400">{moment(blog.createdAt).fromNow()}</div>
