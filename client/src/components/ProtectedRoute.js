@@ -79,7 +79,7 @@ function ProtectedRoute({ children }) {
   return (
     currentUser && (
       <div className="p-5 ">
-      <nav class="bg-white px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+      <nav class="bg-header px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
       <div class="container flex flex-wrap items-center justify-between mx-auto">
       <div class="flex items-center  cursor-pointer" onClick={() => navigate("/")}>
           <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d8ab2f164464737.63f74bc45587e.png" class="h-9 mr-6 sm:h-12" alt="radBlok Logo" />
