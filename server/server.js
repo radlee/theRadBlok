@@ -20,7 +20,7 @@ app.use("/api/blog-actions", blogActionsRoute);
 
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5700;
 const server = require("http").createServer(app);
 
 
