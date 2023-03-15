@@ -12,8 +12,7 @@ function Register() {
   const [user, setUser] = React.useState({
     name: "",
     email: "",
-    password: "",
-    profile: ""
+    password: ""
   });
 
   const register = async () => {
