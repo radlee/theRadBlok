@@ -83,7 +83,7 @@ function ProtectedRoute({ children }) {
       <div class="container flex flex-wrap items-center justify-between mx-auto">
       <div class="flex items-center  cursor-pointer" onClick={() => navigate("/")}>
           <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d8ab2f164464737.63f74bc45587e.png" class="h-9 mr-6 sm:h-12" alt="radBlok Logo" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><span className="rad">rad</span>Blok</span>
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-primary"><span className="rad">rad</span>Blok</span>
       </div>
       <div class="flex items-center md:order-2">
           <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
