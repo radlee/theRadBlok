@@ -91,11 +91,11 @@ textarea:focus {
 }
 
 
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
   .heading {
     font-size: 20px !important;
   }
   .paragraph {
-    font-size: 31px;
+    font-size: 30px !important;
   }
 }
