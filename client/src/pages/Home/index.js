@@ -65,7 +65,7 @@ console.log(currentUser)
 
       <br />
       <br />
-      <h1 className="text-5xl font-black text-center border-l-8  border-primary"><span className="heading"> "Blogger's Republic." </span></h1>
+      <h1 className="text-5xl font-black text-center border-l-8  border-primary"><span className="heading"> "Blogger's Republic" </span></h1>
       <br />
       <br />
       <p className="text-center text-primary text-5xl"><span className="paragraph"> Online Platform for Publishing Written Content.</span></p>
