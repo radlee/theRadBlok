@@ -9,11 +9,13 @@
 
 .paragraph {
   font-family: 'Yesteryear' !important;
+  font-size: 50px;
 }
 
 .heading {
   background-color: #bf0c0c;
   padding: 20px;
+  font-size: 40px;
   /* font-family: 'Great Vibes' !important; */
   font-family: 'Carter One' !important;
   letter-spacing: 5px;;
@@ -81,4 +83,14 @@ textarea:focus {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(222, 221, 221);
+}
+
+
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 23px;
+  }
+  .paragraph {
+    font-size: 31px;
+  }
 }
