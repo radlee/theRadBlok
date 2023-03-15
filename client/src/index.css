@@ -85,6 +85,11 @@ textarea:focus {
   background: rgb(222, 221, 221);
 }
 
+.read {
+  color: #fa1313;
+  text-decoration: overline;
+}
+
 
 @media screen and (max-width: 480px) {
   .heading {

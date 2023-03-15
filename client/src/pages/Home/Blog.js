@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function Blog({ blog }) {
   console.log("Blogger ", blog.
   content.data)
-  const { currentUser } = useSelector((state) => state.usersReducer);
   const navigate = useNavigate();
   return (
     <div className="container">
@@ -33,7 +32,12 @@ function Blog({ blog }) {
     
     <div class="font-medium dark:text-white">
         <div>{blog.user.name}</div>
-        <div class="text-sm text-gray-500 dark:text-gray-400">{moment(blog.createdAt).fromNow()}</div>
+        <div class="text-sm text-gray-500 dark:text-gray-400">
+          {moment(blog.createdAt).fromNow()}
+          <br />
+          <br />
+          <p className="read"><em>Read More...</em></p>
+        </div>
     </div>
 </div>
 

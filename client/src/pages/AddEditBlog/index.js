@@ -122,6 +122,8 @@ function AddEditBlog() {
         />
 
         <div>
+          <p className="text-red warning"><em>Please upload Images less that 50MB</em></p>
+          <br />
           <Editor
             toolbarStyle={{
               border: "1px solid #ccc",
@@ -140,7 +142,7 @@ function AddEditBlog() {
               padding: "10px",
               
             }}
-            handleReturn={this.myHandleReturn}
+
             editorState={blog.content}
             onEditorStateChange={(content) =>
               setBlog({ ...blog, content: content })
