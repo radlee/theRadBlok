@@ -20,7 +20,7 @@
   font-family: 'Carter One' !important;
   letter-spacing: 5px;;
   color: #ffffff;
-  line-height: 2.5;
+  line-height: 3;
 }
 
 .footer {
@@ -94,6 +94,7 @@ textarea:focus {
 @media screen and (max-width: 480px) {
   .heading {
     font-size: 20px !important;
+    line-height: 4 !important;
   }
   .paragraph {
     font-size: 30px !important;
