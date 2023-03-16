@@ -6,7 +6,6 @@ import { toast } from "react-hot-toast";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { GetAllBlogs } from "../../apicalls/blogs";
 import Blog from "./Blog";
-import { Grid, Cell } from 'react-mdl';
 import { Pagination } from 'antd';
 
 function Home() {
@@ -60,7 +59,9 @@ console.log(currentUser)
   }
 
   return (
+    
     <div>
+      
 
 
 
@@ -81,7 +82,6 @@ console.log(currentUser)
       <br />
 
       
-
       <Button
           title="Add Blog"
           variant="primary-outlined"
