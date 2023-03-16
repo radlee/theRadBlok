@@ -61,6 +61,9 @@ console.log(currentUser)
 
   return (
     <div>
+
+
+
       <br />
 
       <br />
@@ -76,6 +79,8 @@ console.log(currentUser)
 
       <br />
       <br />
+
+      
 
       <Button
           title="Add Blog"

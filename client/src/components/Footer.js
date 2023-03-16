@@ -1,16 +1,21 @@
 import React from 'react'
 
+
+
 function Footer() {
+
+  
   return (
 
+    
     <div className="max-w-2xl mx-auto text-center">
 
 	<footer className="bg-white rounded-lg shadow items-center p-6">
 
-  <div class="flex flex-wrap justify-center">
+  <div className="flex flex-wrap justify-center">
   <img
     src={process.env.PUBLIC_URL + 'logo192.png'}
-    class=" h-15 max-w-sm bg-white p-1"
+    className=" h-15 max-w-sm bg-white p-1"
     alt="logo" />
     
 </div>

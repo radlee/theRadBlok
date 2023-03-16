@@ -31,7 +31,7 @@ function Blog({ blog }) {
         <div class="flex items-center space-x-4">
     
     <div class="font-medium dark:text-white">
-        <div>{blog.user.name}</div>
+        <div>By : {blog.user.name}</div>
         <div class="text-sm text-gray-500 dark:text-gray-400">
           {moment(blog.createdAt).fromNow()}
           <br />
