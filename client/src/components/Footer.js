@@ -14,8 +14,8 @@ function Footer() {
 
   <div className="flex flex-wrap justify-center">
   <img
-    src={process.env.PUBLIC_URL + 'logo192.png'}
-    className=" h-15 max-w-sm bg-white p-1"
+    src={process.env.PUBLIC_URL + 'spin.png'}
+    className=" spin h-5 max-w-sm p-1"
     alt="logo" />
     
 </div>
