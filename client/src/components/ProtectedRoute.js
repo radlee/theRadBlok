@@ -98,12 +98,12 @@ function ProtectedRoute({ children }) {
               {currentUser.name}
             </h1>
             <div
-              className="relative flex cursor-pointer"
+              className="  relative flex cursor-pointer"
               onClick={() => navigate("/notifications")}
             >
               <i className="ri-notification-line cursor-pointer"></i>
               {unreadCount > 0 && (
-                <h1 className="p-2 h-5 w-5 bg-red-500 text-white  rounded-full text-[10px] flex items-center justify-center  -ml-1">
+                <h1 className="p-2 h-5 w-5 bg-red text-white  rounded-full text-[10px] flex items-center justify-center  -ml-1">
                   {unreadCount}
                 </h1>
               )}

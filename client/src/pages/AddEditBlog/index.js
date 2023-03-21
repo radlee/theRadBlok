@@ -97,6 +97,33 @@ function AddEditBlog() {
     }
   }, []);
 
+
+  function pasteIntoInput(el, text) {
+    el.focus();
+    if (typeof el.selectionStart == "number"
+            && typeof el.selectionEnd == "number") {
+        var val = el.value;
+        var selStart = el.selectionStart;
+        el.value = val.slice(0, selStart) + text + val.slice(el.selectionEnd);
+        el.selectionEnd = el.selectionStart = selStart + text.length;
+    } else if (typeof document.selection != "undefined") {
+        var textRange = document.selection.createRange();
+        textRange.text = text;
+        textRange.collapse(false);
+        textRange.select();
+    }
+}
+
+
+  function handleEnter(evt) {
+    if (evt.keyCode == 13 && evt.shiftKey) {
+        if (evt.type == "enter") {
+            pasteIntoInput(this, "\n");
+        }
+        evt.preventDefault();
+    }
+}
+
   return (
 
     
@@ -129,6 +156,7 @@ function AddEditBlog() {
               border: "1px solid #ccc",
               zIndex: 1000,
             }}
+            handleEnter={handleEnter}
             toolbar={{
               image: {
                 uploadCallback: uploadImageCallBack,
