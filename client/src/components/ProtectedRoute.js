@@ -84,14 +84,14 @@ function ProtectedRoute({ children }) {
   return (
     currentUser && (
       <div className="p-5 ">
-      <nav class="bg-header px-2 sm:px-4 py-2.5 rounded ">
-      <div class="container flex flex-wrap items-center justify-between mx-auto">
-      <div class="flex items-center  cursor-pointer" onClick={() => navigate("/")}>
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d8ab2f164464737.63f74bc45587e.png" class="h-9 mr-6 sm:h-12" alt="radBlok Logo" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-primary"><span className="rad">rad</span>Blok</span>
+      <nav className="bg-header px-2 sm:px-4 py-2.5 rounded ">
+      <div className="container flex flex-wrap items-center justify-between mx-auto">
+      <div className="flex items-center  cursor-pointer" onClick={() => navigate("/")}>
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632/d8ab2f164464737.63f74bc45587e.png" className="h-9 mr-6 sm:h-12" alt="radBlok Logo" />
+          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-primary"><span className="rad">rad</span>Blok</span>
       </div>
-      <div class="flex items-center md:order-2">
-          <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+      <div className="flex items-center md:order-2">
+          <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           </button>
 
 

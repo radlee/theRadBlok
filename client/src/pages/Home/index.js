@@ -37,6 +37,7 @@ console.log(currentUser)
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const indexOfLastPage = page * blogsPerPage;
@@ -49,10 +50,10 @@ console.log(currentUser)
 
   const itemRender = (current, type, originalElement) => {
     if(type === 'prev') {
-      return <a>Previous</a>
+      return <a  href="/#">Previous</a>
     }
     if(type === 'next') {
-      return <a>Next</a>
+      return <a href="/#">Next</a>
     }
 
     return originalElement;

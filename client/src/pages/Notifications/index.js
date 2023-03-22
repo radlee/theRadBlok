@@ -1,4 +1,3 @@
-import moment from "moment";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,6 +81,7 @@ function Notifications() {
 
   React.useEffect(() => {
     getNotifications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
