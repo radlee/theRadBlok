@@ -68,6 +68,11 @@ function ProtectedRoute({ children }) {
     }
 
     socket.off("newNotification").on("newNotification", (data) => {
+      toast((t) => (
+        <span className="bg-white text-black p-2 rounded ">
+          {data.title}
+        </span>
+      ))
       const audio = new Audio("/notificationSound.mp3");
       audio.play();
       dispatch(SetUnreadCount(unreadCount + 1));

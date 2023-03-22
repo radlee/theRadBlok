@@ -23,7 +23,6 @@ function AddEditBlog() {
     canComment: false,
     canLike: false,
   });
-  
 
   const onSave = async () => {
     try {
@@ -78,7 +77,6 @@ function AddEditBlog() {
     }
   };
 
-
   function uploadImageCallBack(file) {
     return new Promise(
       (resolve, reject) => {
@@ -88,7 +86,6 @@ function AddEditBlog() {
         reader.readAsDataURL(file);
       });
   }
-  
 
   useEffect(() => {
     if(params.id)
@@ -96,7 +93,6 @@ function AddEditBlog() {
       getData();
     }
   }, []);
-
 
   function pasteIntoInput(el, text) {
     el.focus();
@@ -114,7 +110,6 @@ function AddEditBlog() {
     }
 }
 
-
   function handleEnter(evt) {
     if (evt.keyCode == 13 && evt.shiftKey) {
         if (evt.type == "enter") {
@@ -126,7 +121,6 @@ function AddEditBlog() {
 
   return (
 
-    
     <div>
       <div className="flex justify-between">
         <h1 className="text-primary uppercase text-2xl font-bold">
@@ -214,7 +208,7 @@ function AddEditBlog() {
         </div>
 
         <div className="flex justify-end gap-5">
-          <Button title="Cancel" variant="primary-outlined" />
+          <Button title="Cancel" variant="primary-outlined" onClick={navigate("/")} />
           <Button title="Save" onClick={onSave} />
         </div>
       </div>
