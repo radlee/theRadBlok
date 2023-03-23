@@ -92,7 +92,8 @@ function AddEditBlog() {
     {
       getData(); 
     }
-  }, []); // eslint-disable-next-line
+    // eslint-disable-next-line
+  }, []); 
 
   return (
 

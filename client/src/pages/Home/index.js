@@ -63,9 +63,6 @@ console.log(currentUser)
     
     <div>
       
-      
-
-
 
       <br />
 
