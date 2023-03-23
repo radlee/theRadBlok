@@ -59,7 +59,7 @@ function ProtectedRoute({ children }) {
       getUser();
     } else {
       navigate("/login");
-    }
+    }// eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -73,12 +73,12 @@ function ProtectedRoute({ children }) {
           {data.title}
         </span>
       ))
-      const audio = new Audio("/notificationSound.mp3");
+      const audio = new Audio("/notification.wav");
       audio.play();
       dispatch(SetUnreadCount(unreadCount + 1));
 
       // play notification sound
-    });
+    });// eslint-disable-next-line
   }, [currentUser]);
 
   return (
