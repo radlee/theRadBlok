@@ -73,7 +73,7 @@ function ProtectedRoute({ children }) {
           {data.title}
         </span>
       ))
-      const audio = new Audio("/notification.wav");
+      const audio = new Audio("/notificationSound.mp3");
       audio.play();
       dispatch(SetUnreadCount(unreadCount + 1));
 
