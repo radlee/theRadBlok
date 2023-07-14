@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import { toast } from "react-hot-toast";
@@ -10,14 +10,12 @@ import { Pagination } from 'antd';
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
-  const { currentUser } = useSelector((state) => state.usersReducer);
   const [total, setTotal] = useState("");
   const [page, setPage] = useState(1);
   const [blogsPerPage, setBlogsPerPage] = useState(6);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-console.log(currentUser)
   const getData = async () => {
     try {
       dispatch(ShowLoading());

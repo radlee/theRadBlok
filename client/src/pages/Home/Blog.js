@@ -1,12 +1,8 @@
 import React from "react";
 import moment from "moment";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
 function Blog({ blog }) {
-  console.log("Blogger ", blog.
-  content)
   const navigate = useNavigate();
   return (
     <div className="container">
