@@ -60,7 +60,6 @@ function Home() {
   return (
     
     <div>
-      
 
       <br />
 
@@ -87,7 +86,7 @@ function Home() {
           onClick={() => navigate("/add-blog")}
         />
 
-      <div className="grid lg:grid-cols-3 xl:grid-cols-3 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
+      <div className="grid lg:grid-cols-3 xl:grid-cols-2 gap-5 mt-5 sm:grid-cols-1 xs:grid-cols-1">
         {currentBlogs.map((blog) => (
           <Blog key={blog._id} blog={blog} />
         ))}
