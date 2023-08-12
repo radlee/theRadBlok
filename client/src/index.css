@@ -8,17 +8,23 @@
 }
 
 .paragraph {
-  font-family: 'Yesteryear' !important;
-  font-size: 50px;
+  /* font-family: 'Yesteryear' !important; */
+  /* font-family: 'Raleway', sans-serif ; */
+  font-family: 'Edu SA Beginner' !important;
+  font-size: 20px;
+}
+
+.para {
+  font-family: 'Satisfy' !important;
+  font-size: 30px;
 }
 
 .heading {
   background-color: #bf0c0c;
   padding: 20px;
   font-size: 40px;
-  /* font-family: 'Great Vibes' !important; */
-  font-family: 'Carter One' !important;
-  letter-spacing: 5px;;
+  font-family: 'Bebas Neue', sans-serif !important;
+  letter-spacing: 6px;;
   color: #ffffff;
   line-height: 3;
 }
@@ -92,7 +98,7 @@ textarea:focus {
 
 
 .spin {
-  height: 40vmin;
+  height: 24vmin;
   pointer-events: none;
 }
 
