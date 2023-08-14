@@ -19,10 +19,10 @@
 }
 
 .heading {
-  background-color: #bf0c0c;
+  background-color: #bf0c0c00;
   padding: 20px;
   text-shadow: 2px 2px 3px rgb(0, 0, 0);
-  font-size: 40px;
+  font-size: 75px;
   font-family: 'Bebas Neue', sans-serif !important;
   letter-spacing: 6px;;
   color: #ffffff;
@@ -129,8 +129,8 @@ textarea:focus {
 
 @media screen and (max-width: 480px) {
   .heading {
-    font-size: 20px !important;
-    line-height: 4 !important;
+    font-size: 66px !important;
+    line-height: 2 !important;
   }
   .paragraph {
     font-size: 30px !important;
