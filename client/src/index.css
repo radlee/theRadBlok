@@ -21,6 +21,7 @@
 .heading {
   background-color: #bf0c0c;
   padding: 20px;
+  text-shadow: 2px 2px 5px rgb(136, 136, 136);
   font-size: 40px;
   font-family: 'Bebas Neue', sans-serif !important;
   letter-spacing: 6px;;
