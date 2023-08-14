@@ -25,7 +25,7 @@ function Footer() {
           <hr className='horizon' />
           <br />
 
-		<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">©2024 < span className="rad">rad</span><span className="blak">Blok by origin< span className="rad">2020</span> | All Rights Reserved</span>
+		<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">©2024 < span className="rad">rad</span><span className="blak">Blok by original < span className="rad">design </span> studio | All Rights Reserved</span>
     </span>
 	</footer>
 </div>
