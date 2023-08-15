@@ -130,7 +130,7 @@ textarea:focus {
 @media screen and (max-width: 480px) {
   .heading {
     font-size: 66px !important;
-    line-height: 2 !important;
+    line-height: 1 !important;
   }
   .paragraph {
     font-size: 30px !important;
