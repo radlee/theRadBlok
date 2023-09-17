@@ -21,7 +21,7 @@ you can also delete and/or edit your posts.
 
 ### Executing program
 
-* git clone the repo
+* git clone https://github.com/radlee/theRadBlok.git
 * npm install
 ```
 git clone <repo>
