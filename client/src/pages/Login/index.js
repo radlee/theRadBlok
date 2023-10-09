@@ -35,6 +35,7 @@ function Login() {
     <div className="flex justify-center h-screen items-center login-bg">
       
       <div className=" shadow login-white p-5 w-[380px]">
+    
         <img src={process.env.PUBLIC_URL + 'spin.png'} alt="login logo"/>
         <br />
         <div className="flex flex-col gap-5">

@@ -110,7 +110,7 @@ function BlogDescription() {
           user: currentUser._id,
           notificationPayload: {
             user: blog?.user?._id,
-            title: `${currentUser?.name} liked your blog ${blog?.title}`,
+            title: `${currentUser?.name}  blog ${blog?.title}`,
             onClick: `/blog-desc/${blog?._id}`,
           },
         });
