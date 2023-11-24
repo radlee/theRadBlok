@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "https://radblok.onrender.com/server",
   "private": true,
   "dependencies": {
     "@lottiefiles/lottie-player": "^1.7.1",
