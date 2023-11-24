@@ -87,7 +87,7 @@ function BlogDescription() {
       if (isAlreadyLiked) {
         socket.emit("newNotification", {
           userId: blog?.user?._id,
-          title: `${currentUser?.name} unliked your blog ${blog?.title}`,
+          title: `<strong>${currentUser?.name} </strong> unliked your blog ${blog?.title}`,
         });
 
         response = await UnlikeBlog({
@@ -102,7 +102,7 @@ function BlogDescription() {
       } else {
         socket.emit("newNotification", {
           userId: blog?.user?._id,
-          title: `${currentUser?.name} liked your blog ${blog?.title}`,
+          title: `<strong>${currentUser?.name}</strong> liked your blog ${blog?.title}`,
         });
 
         response = await LikeBlog({

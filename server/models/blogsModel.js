@@ -18,6 +18,10 @@ const blogSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+    file: {
+      type: String,
+      required: true
+  },
     canShare: {
       type: Boolean,
       require: true,

@@ -19,6 +19,7 @@ function AddEditBlog() {
     title: "",
     content: EditorState.createEmpty(),
     description: "",
+    file: "",
     canShare: false,
     canComment: false,
     canLike: false,
@@ -27,22 +28,20 @@ function AddEditBlog() {
   const onSave = async () => {
     try {
       dispatch(ShowLoading());
-      let response = null
-      if(params.id)
-      {
-        response = await UpdateBlog({
-          ...blog,
-          content: JSON.stringify(convertToRaw(blog.content.getCurrentContent())),
-          user: currentUser._id,
-          _id: params.id
-        });
-      }else{
-        response = await AddNewBlog({
-          ...blog,
-          content: JSON.stringify(convertToRaw(blog.content.getCurrentContent())),
-          user: currentUser._id,
-        });
+      const formData = new FormData();
+      formData.append('title', blog.title);
+      formData.append('content', JSON.stringify(convertToRaw(blog.content.getCurrentContent())));
+      formData.append('user', currentUser._id);
+      formData.append('file', blog.file);  // Use 'file' as the key
+      console.log(" Form Data ----- ", formData);
+      let response = null;
+      if (params.id) {
+        formData.append('_id', params.id);
+        response = await UpdateBlog(formData);
+      } else {
+        response = await AddNewBlog(formData);
       }
+  
       if (response.success) {
         toast.success(response.message);
         navigate("/");
@@ -55,6 +54,7 @@ function AddEditBlog() {
       toast.error(error.message);
     }
   };
+  
 
   const getData = async () => {
     try {
@@ -76,16 +76,6 @@ function AddEditBlog() {
       toast.error(error.message);
     }
   };
-
-  function uploadImageCallBack(file) {
-    return new Promise(
-      (resolve, reject) => {
-        const reader = new FileReader(); // eslint-disable-line no-undef
-        reader.onload = e => resolve({ data: { link: e.target.result } });
-        reader.onerror = e => reject(e);
-        reader.readAsDataURL(file);
-      });
-  }
 
   useEffect(() => {
     if(params.id)
@@ -111,6 +101,11 @@ function AddEditBlog() {
           value={blog.title}
           onChange={(e) => setBlog({ ...blog, title: e.target.value })}
         />
+        <input
+          type="file"
+          name="file"
+          onChange={(e) => setBlog({ ...blog, file: e.target.files[0] })}
+        />
         <textarea
           placeholder="Description"
           value={blog.description}
@@ -126,12 +121,7 @@ function AddEditBlog() {
               border: "1px solid #ccc",
               zIndex: 1000,
             }}
-            toolbar={{
-              image: {
-                uploadCallback: uploadImageCallBack,
-                previewImage: true,
-              },
-            }}
+    
             editorStyle={{
               border: "1px solid #ccc",
               lineHeight: '75%',

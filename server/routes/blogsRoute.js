@@ -1,15 +1,59 @@
+const express = require('express');
 const router = require("express").Router();
 const Blog = require("../models/blogsModel");
 const authMiddleware = require("../middlewares/authMiddleware");
 const Like = require("../models/likesModel");
 const Comment = require("../models/commentsModel");
 const Share = require("../models/sharesModel");
+const app = express();
+const multer = require('multer');
+const path = require('path');
+
+
+const cors = require('cors');
+app.use(cors());
+
+//Image Upload - Multer ====
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + "_"+ Date.now() + "_" + file.originalname)
+  }
+});
+
+var upload = multer({
+  storage: storage,
+}).single('file');
+
+// Add this line to your server code
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+
 
 // add new blog
-router.post("/add-blog", authMiddleware, async (req, res) => {
+router.post("/add-blog", upload, authMiddleware, async (req, res) => {
   try {
-    const newBlog = new Blog(req.body);
+    const newBlog = new Blog({
+      user: req.body.user,
+      title: req.body.title,
+      description: req.body.description,
+      content: req.body.content,
+      file: req.file ? req.file.filename : '', // handle if no file is present
+      canShare: req.body.canShare,
+      canComment: req.body.canComment,
+      canLike: req.body.canLike,
+    });
+    console.log(" --BlogsRoute:: --- New Blog ----- ", newBlog);
     await newBlog.save();
+    console.log(" After Save ---------------------- ", newBlog);
+
+    // Inside your server route handling file uploads
+console.log('File saved ====================== :', req.file.filename);
+console.log('Full path ==================== :', path.join(__dirname, 'uploads', req.file.filename));
+
+    
     res.send({
       message: "Blog added successfully",
       data: newBlog,
@@ -23,6 +67,7 @@ router.post("/add-blog", authMiddleware, async (req, res) => {
   }
 });
 
+
 // get all blogs
 router.get("/get-all-blogs", async (req, res) => {
   try {
@@ -32,12 +77,15 @@ router.get("/get-all-blogs", async (req, res) => {
       data: blogs,
       success: true,
     });
+    console.log("blogsRoutes ::: -- Get all Blogs", blogs)
   } catch (error) {
     res.send({
       error: error.message,
       success: false,
     });
   }
+
+  
 });
 
 // get blog by id
@@ -58,9 +106,25 @@ router.get("/get-blog-by-id/:id", async (req, res) => {
 });
 
 // update blog
-router.put("/update-blog/:id", authMiddleware, async (req, res) => {
+router.put("/update-blog/:id", upload, authMiddleware, async (req, res) => {
   try {
-    await Blog.findByIdAndUpdate(req.params.id, req.body);
+    // Extract text fields from req.body
+    const { title, description, content, canShare, canComment, canLike } = req.body;
+
+    // Construct the updated blog object
+    const updatedBlog = {
+      title,
+      description,
+      content,
+      canShare: canShare === 'true', // Convert string to boolean
+      canComment: canComment === 'true', // Convert string to boolean
+      canLike: canLike === 'true', // Convert string to boolean
+      file: req.file.filename, // Assuming the filename is the correct field
+    };
+
+    // Perform the update
+    await Blog.findByIdAndUpdate(req.params.id, updatedBlog);
+    
     res.send({
       message: "Blog updated successfully",
       success: true,
@@ -72,6 +136,7 @@ router.put("/update-blog/:id", authMiddleware, async (req, res) => {
     });
   }
 });
+
 
 // delete blog
 router.delete("/delete-blog/:id", authMiddleware, async (req, res) => {
