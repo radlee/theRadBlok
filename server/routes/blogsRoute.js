@@ -10,8 +10,12 @@ const multer = require('multer');
 const path = require('path');
 
 
-const cors = require('cors');
-app.use(cors());
+// socket io
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://radblok.onrender.com",
+  },
+});
 
 //Image Upload - Multer ====
 var storage = multer.diskStorage({
@@ -45,15 +49,9 @@ router.post("/add-blog", upload, authMiddleware, async (req, res) => {
       canComment: req.body.canComment,
       canLike: req.body.canLike,
     });
-    console.log(" --BlogsRoute:: --- New Blog ----- ", newBlog);
+
     await newBlog.save();
-    console.log(" After Save ---------------------- ", newBlog);
-
-    // Inside your server route handling file uploads
-console.log('File saved ====================== :', req.file.filename);
-console.log('Full path ==================== :', path.join(__dirname, 'uploads', req.file.filename));
-
-    
+  
     res.send({
       message: "Blog added successfully",
       data: newBlog,
@@ -77,7 +75,7 @@ router.get("/get-all-blogs", async (req, res) => {
       data: blogs,
       success: true,
     });
-    console.log("blogsRoutes ::: -- Get all Blogs", blogs)
+ 
   } catch (error) {
     res.send({
       error: error.message,
