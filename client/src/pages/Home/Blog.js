@@ -18,7 +18,7 @@ function Blog({ blog }) {
       <div className="description border-b-4  border-red">
         <h1 className="text-black text-xl font-bold">{blog.title}</h1>
       </div>
-      <img src={`/uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }}/>
+      <img src={`http://localhost:10000/uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }}/>
 
       <hr />
       <p className="font-bold desc">{blog.description}</p>
@@ -34,7 +34,7 @@ function Blog({ blog }) {
           {moment(blog.createdAt).fromNow()}
           <br />
           <br />
-          <p className="read"><em>Read More...</em></p>
+          <p className="read"><em><strong>Read More...</strong></em></p>
         </div>
     </div>
 </div>
