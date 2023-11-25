@@ -65,19 +65,10 @@ function Home() {
 
       <br />
       <br />
-      <h1 className="font-black text-center border-l-8  border-primary"><span className="heading"> "Blogger's Republic: Where Words Shape Worlds" </span></h1>
+      <h1 className="font-black text-center border-l-8 heading border-primary">< span className="rad">rad</span>Blok</h1>
       <br />
   
-      <p className="text-center text-primary text-5xl"><span className="para" contenteditable="true"> Unleash Your Creativity, Fuel the Discourse – Your Online Oasis for Crafting and Sharing Written Content.</span></p>
-      <br />
-      <p className="text-center text-primary text-5xl"><span className="paragraph"> Embark on a literary journey like no other with Blogger's Republic, a dynamic online haven where your words become the architects of new realities. Fuel your creative fire and let your ideas take flight in this digital realm dedicated to the art of expression. Whether you're a seasoned wordsmith or a budding scribe, Blogger's Republic empowers you to curate, captivate, and collaborate, forging connections that transcend boundaries. Join the movement that celebrates the power of the written word – your passport to a thriving community where thoughts converge, stories flourish, and the echoes of minds resonate. Welcome to a republic where imagination knows no bounds, and every keystroke paves the way for a brighter, more eloquent tomorrow
-</span></p>
-      <br />
-
-      <hr />
-
-      <br />
-      <br />
+      <p className="text-center text-primary text-5xl"><span className="para" contenteditable="true"> Blogger's Republic</span></p>
 
       
       <Button
