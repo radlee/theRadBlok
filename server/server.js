@@ -23,11 +23,10 @@ const port = process.env.PORT || 5000;
 const server = require("http").createServer(app);
 
 
-
 // socket io
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://radblok.onrender.com",
+    origin: "*",
   },
 });
 
