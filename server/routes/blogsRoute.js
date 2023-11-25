@@ -11,10 +11,11 @@ const path = require('path');
 
 const server = require("http").createServer(app);
 
-// socket io
+// Allow specific origins in socket.io configuration
 const io = require("socket.io")(server, {
   cors: {
-    origin: "*",
+    origin: "https://radblok.onrender.com",
+    methods: ["GET", "POST"],
   },
 });
 
