@@ -31,6 +31,7 @@ function AddEditBlog() {
       const formData = new FormData();
       formData.append('title', blog.title);
       formData.append('content', JSON.stringify(convertToRaw(blog.content.getCurrentContent())));
+      formData.append('title', blog.description);
       formData.append('user', currentUser._id);
       formData.append('file', blog.file);  // Use 'file' as the key
       console.log(" Form Data ----- ", formData);
