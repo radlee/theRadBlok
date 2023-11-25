@@ -7,6 +7,11 @@
   font-family: "Poppins", sans-serif !important;
 }
 
+.font-bold {
+  text-align: center;
+  font-weight: bolder;
+}
+
 .paragraph {
   font-family: 'Poppins' !important;
   font-size: 20px;
@@ -21,13 +26,9 @@
 }
 
 .heading {
-  background-color: #bf0c0c00;
-  padding: 20px;
-  text-shadow: 2px 2px 3px rgb(168, 168, 168);
   font-size: 75px;
   font-family: 'Poppins', sans-serif !important;
-  letter-spacing: 6px;
-  font-weight: 900;
+  font-weight: bolder;
   color: #2c2c2c;
 }
 
