@@ -9,6 +9,7 @@ const app = express();
 const multer = require('multer');
 const path = require('path');
 
+const server = require("http").createServer(app);
 
 // socket io
 const io = require("socket.io")(server, {
