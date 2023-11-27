@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Blog({ blog }) {
   const navigate = useNavigate();
-  console.log('Image URL:', `https://radblok.onrender.com/${blog.file}`);
+  console.log('Image URL:', `https://radblok.onrender.com/uploads/${blog.file}`);
   return (
     <div className="container">
 
