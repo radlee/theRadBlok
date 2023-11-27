@@ -37,7 +37,6 @@ var upload = multer({
 app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
 
 
-
 // add new blog
 router.post("/add-blog", upload, authMiddleware, async (req, res) => {
   console.log(" Before for for Save DATA AFtre SAVE -  ", req)
@@ -54,7 +53,7 @@ router.post("/add-blog", upload, authMiddleware, async (req, res) => {
     });
     console.log(" Before Save DATA AFtre SAVE -  ", newBlog)
     await newBlog.save();
-  console.log(" After Save DATA AFtre SAVE -  ", newBlog)
+    console.log(" After Save DATA AFtre SAVE -  ", newBlog)
     res.send({
       message: "Blog added successfully",
       data: newBlog,
@@ -67,6 +66,7 @@ router.post("/add-blog", upload, authMiddleware, async (req, res) => {
     });
   }
 });
+
 
 
 // get all blogs
