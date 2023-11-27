@@ -40,6 +40,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
 
 // add new blog
 router.post("/add-blog", upload, authMiddleware, async (req, res) => {
+  console.log(" Before for for Save DATA AFtre SAVE -  ", req)
   try {
     const newBlog = new Blog({
       user: req.body.user,
@@ -51,9 +52,9 @@ router.post("/add-blog", upload, authMiddleware, async (req, res) => {
       canComment: req.body.canComment,
       canLike: req.body.canLike,
     });
-
+    console.log(" Before Save DATA AFtre SAVE -  ", newBlog)
     await newBlog.save();
-  
+  console.log(" After Save DATA AFtre SAVE -  ", newBlog)
     res.send({
       message: "Blog added successfully",
       data: newBlog,
