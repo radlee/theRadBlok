@@ -34,7 +34,7 @@ var upload = multer({
 }).single('file');
 
 // Add this line to your server code
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
 
 
 
