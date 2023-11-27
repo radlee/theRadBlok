@@ -36,7 +36,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "REACT_APP_API_URL=https://localhost:5000/api react-scripts start",
+    "start": "cross-env REACT_APP_API_URL=https://radblok.onrender.com/api react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -61,8 +61,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"
   },
-  "proxy": "https://localhost:5000/api"
+  "proxy": "https://radblok.onrender.com"
 }

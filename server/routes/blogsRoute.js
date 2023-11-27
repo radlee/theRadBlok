@@ -14,7 +14,7 @@ const server = require("http").createServer(app);
 // Allow specific origins in socket.io configuration
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://radblok.onrender.com",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
