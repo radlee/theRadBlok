@@ -7,7 +7,10 @@ const Comment = require("../models/commentsModel");
 const Share = require("../models/sharesModel");
 const app = express();
 const multer = require('multer');
-const path = require('path');
+const path = require("path");
+__dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
+
 
 const server = require("http").createServer(app);
 
@@ -33,9 +36,6 @@ var storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
 }).single('file');
-
-// Add this line to your server code
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // add new blog
 router.post("/add-blog", upload, authMiddleware, async (req, res) => {
