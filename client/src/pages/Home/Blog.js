@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 function Blog({ blog }) {
   const navigate = useNavigate();
-  console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
   // Use window.location.protocol to get the current protocol (http or https)
   const currentProtocol = window.location.protocol;
   const imageUrl = `${currentProtocol}//localhost:3000/uploads/${blog.file}`;
+  console.log("The Other Logger for the IMG - ", imageUrl);
+  console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
 
 // Then use imageUrl in your <img> tag
   return (

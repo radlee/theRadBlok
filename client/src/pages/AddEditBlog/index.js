@@ -34,7 +34,7 @@ function AddEditBlog() {
       formData.append('description', blog.description);
       formData.append('user', currentUser._id);
       formData.append('file', blog.file);  // Use 'file' as the key
-      console.log(" First --  Form Data ----- ", formData);
+    
       let response = null;
       if (params.id) {
         formData.append('_id', params.id);
@@ -42,8 +42,6 @@ function AddEditBlog() {
       } else {
         response = await AddNewBlog(formData);
       }
-
-      console.log("After ---  Form Data ----- ", formData);
   
       if (response.success) {
         toast.success(response.message);
