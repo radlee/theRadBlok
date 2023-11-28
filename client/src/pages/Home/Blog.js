@@ -5,6 +5,11 @@ import { useNavigate } from "react-router-dom";
 function Blog({ blog }) {
   const navigate = useNavigate();
   console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
+  // Use window.location.protocol to get the current protocol (http or https)
+  const currentProtocol = window.location.protocol;
+  const imageUrl = `${currentProtocol}//localhost:3000/uploads/${blog.file}`;
+
+// Then use imageUrl in your <img> tag
   return (
     <div className="container">
 
@@ -19,7 +24,9 @@ function Blog({ blog }) {
       <div className="description border-b-4  border-red">
         <h1 className="text-black text-xl font-bold">{blog.title}</h1>
       </div>
-      <img src={`http://localhost:3000/uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }}/>
+      
+      <img src={imageUrl} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }} />
+
 
       <hr />
       <p className="font-bold desc">{blog.description}</p>
