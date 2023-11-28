@@ -67,8 +67,6 @@ router.post("/add-blog", upload, authMiddleware, async (req, res) => {
   }
 });
 
-
-
 // get all blogs
 router.get("/get-all-blogs", async (req, res) => {
   try {
