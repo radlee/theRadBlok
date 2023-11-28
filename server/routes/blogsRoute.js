@@ -35,7 +35,7 @@ var upload = multer({
 }).single('file');
 
 // Add this line to your server code
-app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // add new blog
 router.post("/add-blog", upload, authMiddleware, async (req, res) => {
