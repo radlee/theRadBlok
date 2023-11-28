@@ -9,18 +9,10 @@ const app = express();
 const multer = require('multer');
 const path = require("path");
 __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/server', '/uploads')));
-
+app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
 
 const server = require("http").createServer(app);
 
-// Allow specific origins in socket.io configuration
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "https://radblok.onrender.com",
-    methods: ["GET", "POST"],
-  },
-});
 
 //Image Upload - Multer 
 

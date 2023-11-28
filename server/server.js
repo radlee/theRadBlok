@@ -10,7 +10,7 @@ const blogActionsRoute = require("./routes/blogActionsRoute");
 
 const path = require("path");
 __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/server', '/uploads')));
+app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
 
 app.use(express.json({limit: "50mb", extended: true}))
 app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}))
@@ -27,7 +27,7 @@ const server = require("http").createServer(app);
 // socket io
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://radblok.onrender.com",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
@@ -43,6 +43,11 @@ io.on("connection", (socket) => {
         socket.to(notification.userId).emit("newNotification", notification);
     });
 });
+
+// Serve static files in development
+// if (process.env.NODE_ENV === 'development') {
+//   app.use(express.static('uploads')); // Adjust the path accordingly
+// }
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
