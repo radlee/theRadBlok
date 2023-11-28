@@ -9,7 +9,7 @@ const app = express();
 const multer = require('multer');
 const path = require("path");
 __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
 
 const server = require("http").createServer(app);
 
