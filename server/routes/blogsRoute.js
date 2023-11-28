@@ -19,14 +19,15 @@ const io = require("socket.io")(server, {
   },
 });
 
-//Image Upload - Multer ====
+//Image Upload - Multer 
+
 var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads');
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'uploads'));
   },
-  filename: function(req, file, cb) {
-    cb(null, file.fieldname + "_"+ Date.now() + "_" + file.originalname)
-  }
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+  },
 });
 
 var upload = multer({
@@ -36,10 +37,9 @@ var upload = multer({
 // Add this line to your server code
 app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
 
-
 // add new blog
 router.post("/add-blog", upload, authMiddleware, async (req, res) => {
-  console.log(" Before for for Save DATA AFtre SAVE -  ", req)
+  console.log(" Before for for Save DATA AFtre SAVE -  ", req.file)
   try {
     const newBlog = new Blog({
       user: req.body.user,
