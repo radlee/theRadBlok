@@ -10,7 +10,7 @@ const blogActionsRoute = require("./routes/blogActionsRoute");
 
 const path = require("path");
 __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '/server', '/uploads')));
 
 app.use(express.json({limit: "50mb", extended: true}))
 app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}))
