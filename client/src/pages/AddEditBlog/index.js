@@ -17,7 +17,7 @@ function AddEditBlog() {
   const dispatch = useDispatch();
   const [blog, setBlog] = React.useState({
     title: "",
-    content: EditorState.createEmpty(),
+    content: '',
     description: "",
     file: "",
     canShare: false,
@@ -30,7 +30,7 @@ function AddEditBlog() {
       dispatch(ShowLoading());
       const formData = new FormData();
       formData.append('title', blog.title);
-      formData.append('content', JSON.stringify(convertToRaw(blog.content.getCurrentContent())));
+      formData.append('content', blog.content);
       formData.append('description', blog.description);
       formData.append('user', currentUser._id);
       formData.append('file', blog.file);  // Use 'file' as the key
