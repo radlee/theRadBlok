@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-// mongoose.connect(process.env.mongo_url);
-mongoose.connect("mongodb+srv://radlee:Leander247365@radblok.ubznfgv.mongodb.net/radblok");
+mongoose.connect(process.env.mongo_url);
+// mongoose.connect("mongodb+srv://radlee:Leander247365@radblok.ubznfgv.mongodb.net/radblok");
+// mongoose.connect("mongodb+srv://radlee:lee1234@radbblok23.c2xuoim.mongodb.net/radbblok23");
 
 const connection = mongoose.connection;
 
