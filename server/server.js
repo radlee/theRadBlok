@@ -27,7 +27,7 @@ const server = require("http").createServer(app);
 // socket io
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://radblok.onrender.com",
     methods: ["GET", "POST"],
   },
 });

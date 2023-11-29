@@ -5,6 +5,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 const Like = require("../models/likesModel");
 const Comment = require("../models/commentsModel");
 const Share = require("../models/sharesModel");
+const cors = require('cors');
 const app = express();
 const multer = require('multer');
 const path = require("path");
