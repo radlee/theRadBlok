@@ -16,6 +16,7 @@ const server = require("http").createServer(app);
 
 app.use(cors({
   origin: 'https://radblok.onrender.com',
+  methods: ["GET", "POST"],
   credentials: true,
 }));
 

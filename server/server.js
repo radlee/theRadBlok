@@ -29,6 +29,7 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "https://radblok.onrender.com",
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
