@@ -26,13 +26,13 @@ const port = process.env.PORT || 5000;
 const server = require("http").createServer(app);
 
 // socket io
-// const io = require("socket.io")(server, {
-//   cors: {
-//     origin: "https://radblok.onrender.com",
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//   },
-// });
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://radblok.onrender.com",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 
 //Cross Origin Handle Middleware
@@ -47,6 +47,12 @@ app.use((req, res, next) => {
   }
   next();
 });
+You 
+app.use(
+  cors({
+    origin: process.env.ORIGIN,
+  })
+)
 
 
 io.on("connection", (socket) => {
