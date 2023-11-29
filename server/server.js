@@ -10,8 +10,6 @@ const blogsRoute = require("./routes/blogsRoute");
 const blogActionsRoute = require("./routes/blogActionsRoute");
 
 const path = require("path");
-__dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
 
 app.use(express.json({limit: "50mb", extended: true}))
 app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}))
@@ -34,21 +32,7 @@ const io = require("socket.io")(server, {
   },
 });
 
-console.log("The origin - " , process.env.ORIGIN)
-
-
-// const allowedOrigins = ['https://radblok.onrender.com', 'http://localhost:3000']; // Add your Render app URL
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     // Allow requests with no origin (like mobile apps or curl requests)
-//     if (!origin) return callback(null, true);
-//     if (allowedOrigins.indexOf(origin) === -1) {
-//       const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-//       return callback(new Error(msg), false);
-//     }
-//     return callback(null, true);
-//   }
-// }));
+console.log("The origin :: server.js - " , process.env.ORIGIN)
 
 
 io.on("connection", (socket) => {
@@ -62,6 +46,9 @@ io.on("connection", (socket) => {
         socket.to(notification.userId).emit("newNotification", notification);
     });
 });
+
+__dirname = path.resolve();
+app.use('/uploads', express.static(process.cwd() + '/uploads'));
 
 // render deployment
 if (process.env.NODE_ENV === "production") {

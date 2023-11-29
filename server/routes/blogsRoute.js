@@ -14,27 +14,17 @@ app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
 
 const server = require("http").createServer(app);
 
-// app.use(cors({
-//   origin: 'https://radblok.onrender.com',
-//   methods: ["GET", "POST"],
-//   credentials: true,
-// }));
 
+// socket io
+const io = require("socket.io")(server, {
+  cors: {
+    origin: process.env.ORIGIN,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
-// Use the cors middleware with specific origin(s)
-const allowedOrigins = ['https://radblok.onrender.com', 'http://localhost:3000']; // Add your Render app URL
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
-
+console.log("The origin :: BlogsRoute.js - " , process.env.ORIGIN)
 
 
 //Image Upload - Multer 
