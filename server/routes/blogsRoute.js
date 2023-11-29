@@ -13,6 +13,13 @@ app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
 
 const server = require("http").createServer(app);
 
+app.use(cors({
+  origin: 'https://radblok.onrender.com',
+  credentials: true,
+}));
+
+
+
 
 //Image Upload - Multer 
 
