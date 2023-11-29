@@ -20,18 +20,20 @@ const server = require("http").createServer(app);
 //   credentials: true,
 // }));
 
-//Cross Origin Handle Middleware
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 
-  'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
-  if( req.method === 'OPTIONS'){
-    req.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-    return res.status(200).json({});
+
+// Use the cors middleware with specific origin(s)
+const allowedOrigins = ['https://radblok.onrender.com', 'http://localhost:3000']; // Add your Render app URL
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
   }
-  next();
-});
+}));
 
 
 
