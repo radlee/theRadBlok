@@ -117,7 +117,14 @@ function AddEditBlog() {
         <div>
           <p className="text-red warning"><em>Please upload Images less that 50MB</em></p>
           <br />
-          <Editor
+
+          <textarea
+          placeholder="Conte"
+          value={blog.content}
+          onChange={(e) =>  setBlog({ ...blog, content: e.target.value })}
+          rows={5}
+        />
+          {/* <Editor
             toolbarStyle={{
               border: "1px solid #ccc",
               zIndex: 1000,
@@ -136,7 +143,7 @@ function AddEditBlog() {
               setBlog({ ...blog, content: content })
             }
            
-          />
+          /> */}
         </div>
 
         <div className="flex gap-5">
