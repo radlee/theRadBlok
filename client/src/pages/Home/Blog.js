@@ -9,7 +9,8 @@ function Blog({ blog }) {
   // const imageUrl = `${currentProtocol}//localhost:3000/uploads/${blog.file}`; // For Local
   const imageUrl = `${currentProtocol}//radblok.onrender.com/uploads/${blog.file}`; //For Production
   console.log("The Other Logger for the IMG - ", imageUrl);
-  console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
+  // console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
+  console.log('Image URL:', `http://radblok.onrender.com/uploads/${blog.file}`); //Log for Production
 
 // Then use imageUrl in your <img> tag
   return (
