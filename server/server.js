@@ -22,38 +22,33 @@ app.use("/api/users", usersRoute);
 app.use("/api/blogs", blogsRoute);
 app.use("/api/blog-actions", blogActionsRoute);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 const server = require("http").createServer(app);
 
 // socket io
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://radblok.onrender.com",
+    origin: process.env.ORIGIN,
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-
-const allowedOrigins = ['https://radblok.onrender.com', 'http://localhost:3000']; // Add your Render app URL
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified origin.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  }
-}));
+console.log("The origin - " , process.env.ORIGIN)
 
 
-app.use(
-  cors({
-    origin: process.env.ORIGIN,
-  })
-)
+// const allowedOrigins = ['https://radblok.onrender.com', 'http://localhost:3000']; // Add your Render app URL
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     // Allow requests with no origin (like mobile apps or curl requests)
+//     if (!origin) return callback(null, true);
+//     if (allowedOrigins.indexOf(origin) === -1) {
+//       const msg = 'The CORS policy for this site does not allow access from the specified origin.';
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   }
+// }));
 
 
 io.on("connection", (socket) => {
@@ -67,11 +62,6 @@ io.on("connection", (socket) => {
         socket.to(notification.userId).emit("newNotification", notification);
     });
 });
-
-// Serve static files in development
-// if (process.env.NODE_ENV === 'development') {
-//   app.use(express.static('uploads')); // Adjust the path accordingly
-// }
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
