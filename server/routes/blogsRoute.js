@@ -14,12 +14,24 @@ app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
 
 const server = require("http").createServer(app);
 
-app.use(cors({
-  origin: 'https://radblok.onrender.com',
-  methods: ["GET", "POST"],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: 'https://radblok.onrender.com',
+//   methods: ["GET", "POST"],
+//   credentials: true,
+// }));
 
+//Cross Origin Handle Middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 
+  'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  if( req.method === 'OPTIONS'){
+    req.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
+});
 
 
 

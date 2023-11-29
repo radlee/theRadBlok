@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const app = express();
+const cors = require('cors');
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
 const usersRoute = require("./routes/usersRoute");
@@ -25,13 +26,28 @@ const port = process.env.PORT || 5000;
 const server = require("http").createServer(app);
 
 // socket io
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "https://radblok.onrender.com",
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
+// const io = require("socket.io")(server, {
+//   cors: {
+//     origin: "https://radblok.onrender.com",
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   },
+// });
+
+
+//Cross Origin Handle Middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 
+  'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  if( req.method === 'OPTIONS'){
+    req.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
 });
+
 
 io.on("connection", (socket) => {
     // join room
