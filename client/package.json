@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "homepage": "http://localhost:5000",
+  "homepage": "https://radblok.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -67,5 +67,5 @@
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "https://radblok.onrender.com"
 }
