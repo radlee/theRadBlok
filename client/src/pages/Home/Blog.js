@@ -4,14 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function Blog({ blog }) {
   const navigate = useNavigate();
-  // Use window.location.protocol to get the current protocol (http or https)
-  const currentProtocol = window.location.protocol;
-  // const imageUrl = `${currentProtocol}//localhost:3000/uploads/${blog.file}`; // For Local
-  const imageUrl = `${currentProtocol}/uploads/${blog.file}`; //For Production
-  console.log("The Other Logger for the IMG - ", imageUrl);
+  
   // console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
-  // console.log('Image URL:', `http://radblok.onrender.com/uploads/${blog.file}`); //Log for Production
-  console.log('Image URL ---- For Production -- :', imageUrl); //Log for Production
+  console.log('Image URL:', `http://radblok.onrender.com/uploads/${blog.file}`); //Log for Production
+  // console.log('Image URL ---- For Production -- :', imageUrl); //Log for Production
 
 // Then use imageUrl in your <img> tag
   return (
@@ -29,7 +25,7 @@ function Blog({ blog }) {
         <h1 className="text-black text-xl font-bold">{blog.title}</h1>
       </div>
       
-      <img className="check" src={`http://radblok.onrender.com/server/uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }} />
+      <img className="check" src={`http://radblok.onrender.com/uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }} />
 
 
       <hr />
