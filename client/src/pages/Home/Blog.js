@@ -4,10 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function Blog({ blog }) {
   const navigate = useNavigate();
-  
-  // console.log('Image URL:', `http://localhost:3000/uploads/${blog.file}`);
-  console.log('Image URL:', `http://radblok.onrender.com/uploads/${blog.file}`); //Log for Production
-  // console.log('Image URL ---- For Production -- :', imageUrl); //Log for Production
 
 // Then use imageUrl in your <img> tag
   return (
