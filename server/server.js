@@ -48,7 +48,8 @@ io.on("connection", (socket) => {
 });
 
 __dirname = path.resolve();
-app.use('/uploads', express.static(process.cwd() + '/uploads'));
+// app.use('/uploads', express.static(process.cwd() + '/uploads'));
+app.use('/uploads', express.static('/opt/render/project/src/uploads'));
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
