@@ -29,7 +29,7 @@ function Blog({ blog }) {
         <h1 className="text-black text-xl font-bold">{blog.title}</h1>
       </div>
       
-      <img className="check" src={`../uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }} />
+      <img className="check" src={`http://radblok.onrender.com/uploads/${blog.file}`} alt="Current Image" style={{ maxWidth: '100%', height: 'auto' }} />
 
 
       <hr />
