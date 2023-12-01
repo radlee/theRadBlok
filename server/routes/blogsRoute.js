@@ -9,8 +9,6 @@ const cors = require('cors');
 const app = express();
 const multer = require('multer');
 const path = require("path");
-__dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname,'uploads')));
 
 const server = require("http").createServer(app);
 
@@ -42,6 +40,8 @@ var storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
 }).single('file');
+
+
 
 // add new blog
 router.post("/add-blog", upload, authMiddleware, async (req, res) => {
@@ -293,4 +293,10 @@ router.get(
     }
   }
 );
+
+__dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
+
+
+
 module.exports = router;
