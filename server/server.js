@@ -48,7 +48,7 @@ io.on("connection", (socket) => {
 });
 
 __dirname = path.resolve();
-app.use('/uploads', express.static(process.cwd() + '/uploads'));
+app.use('/uploads', express.static(process.cwd() + 'uploads'));
 // app.use('/uploads', express.static(process.cwd() +'/opt/render/project/src/uploads'));
 
 // render deployment
