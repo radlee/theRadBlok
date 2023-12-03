@@ -47,9 +47,11 @@ io.on("connection", (socket) => {
     });
 });
 
-__dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// __dirname = path.resolve();
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // app.use('/uploads', express.static(process.cwd() +'/opt/render/project/src/uploads'));
+
+
 
 // render deployment
 if (process.env.NODE_ENV === "production") {

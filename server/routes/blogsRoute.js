@@ -5,13 +5,48 @@ const authMiddleware = require("../middlewares/authMiddleware");
 const Like = require("../models/likesModel");
 const Comment = require("../models/commentsModel");
 const Share = require("../models/sharesModel");
+const fs = require('fs');
+const cloudinary = require('../utils/cloudinary');
+const multer = require("multer");
 const cors = require('cors');
 const app = express();
-const multer = require('multer');
-const path = require("path");
 
+const path = require("path");
 const server = require("http").createServer(app);
 
+// const handleImage = (e) => {
+//   const file = e.target.files[0];
+//   setFileToBase(file);
+//   console.log(file);
+// };
+
+// const setFileToBase = (file) => {
+//   const reader = new FileReader();
+//   reader.readAsDataURL(file);
+//   reader.onloadend = () => {
+//     setImage(reader.result)
+//   }
+// }
+
+const imgconfig = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, `image-${Date.now()}.${file.originalname}`)
+  }
+})
+const isImage = (req, file, cb) => {
+  if(file.mimetype.startsWith('image')) {
+    cb(null, true)
+  } else {
+    cb( new Error("Only images are allowed") )
+  }
+}
+const upload = multer({
+  storage: imgconfig, 
+  fileFilter: isImage
+});
 
 // socket io
 const io = require("socket.io")(server, {
@@ -25,34 +60,19 @@ const io = require("socket.io")(server, {
 console.log("The origin :: BlogsRoute.js - " , process.env.ORIGIN)
 
 
-//Image Upload - Multer 
-
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    console.log("🚀 ~ file: upload.ts:11 ~ file", process.cwd());
-    cb(null, `${process.cwd()}/uploads/`)
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
-  },
-});
-
-var upload = multer({
-  storage: storage,
-}).single('file');
-
-
 
 // add new blog
-router.post("/add-blog", upload, authMiddleware, async (req, res) => {
-  console.log(" Before for for Save DATA AFtre SAVE -  ", req.file)
+router.post("/add-blog", upload.single('photo'), authMiddleware, async (req, res) => {
+   const upload = await cloudinary.uploader.upload(req.file.path);
+   console.log("Upload == :", upload)
   try {
     const newBlog = new Blog({
       user: req.body.user,
       title: req.body.title,
       description: req.body.description,
       content: req.body.content,
-      file: req.file ? req.file.filename : '', // handle if no file is present
+      name: req.body.name,
+      imgpath: upload.secure_url,
       canShare: req.body.canShare,
       canComment: req.body.canComment,
       canLike: req.body.canLike,
@@ -77,6 +97,7 @@ router.post("/add-blog", upload, authMiddleware, async (req, res) => {
 router.get("/get-all-blogs", async (req, res) => {
   try {
     const blogs = await Blog.find().populate("user").sort({ createdAt: -1 });
+  
     res.send({
       message: "Blogs fetched successfully",
       data: blogs,
@@ -111,10 +132,10 @@ router.get("/get-blog-by-id/:id", async (req, res) => {
 });
 
 // update blog
-router.put("/update-blog/:id", upload, authMiddleware, async (req, res) => {
+router.put("/update-blog/:id", authMiddleware, async (req, res) => {
   try {
     // Extract text fields from req.body
-    const { title, description, content, canShare, canComment, canLike } = req.body;
+    const { title, description, content, file, canShare, canComment, canLike } = req.body;
 
     // Construct the updated blog object
     const updatedBlog = {

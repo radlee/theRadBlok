@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { Editor } from "react-draft-wysiwyg";
-
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import { EditorState, convertFromRaw } from "draft-js";
 import Button from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { AddNewBlog, GetBlogById, UpdateBlog } from "../../apicalls/blogs";
@@ -25,6 +23,9 @@ function AddEditBlog() {
     canLike: false,
   });
 
+  // console.log("Blog : title: ", blog.title)
+  // console.log("Blog : file: ", blog.file)
+ 
   const onSave = async () => {
     try {
       dispatch(ShowLoading());
@@ -33,14 +34,20 @@ function AddEditBlog() {
       formData.append('content', blog.content);
       formData.append('description', blog.description);
       formData.append('user', currentUser._id);
-      formData.append('file', blog.file);  // Use 'file' as the key
-    
+      formData.append('photo', blog.file);  // Use 'file' as the key
+  
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }
       let response = null;
       if (params.id) {
         formData.append('_id', params.id);
-        response = await UpdateBlog(formData);
+        response = await UpdateBlog(formData, config);
       } else {
-        response = await AddNewBlog(formData);
+        response = await AddNewBlog(formData, config);
+        console.log("The Response :: ", response)
       }
   
       if (response.success) {
@@ -104,7 +111,6 @@ function AddEditBlog() {
         />
         <input
           type="file"
-          name="file"
           onChange={(e) => setBlog({ ...blog, file: e.target.files[0] })}
         />
         <textarea
@@ -124,26 +130,7 @@ function AddEditBlog() {
           onChange={(e) =>  setBlog({ ...blog, content: e.target.value })}
           rows={5}
         />
-          {/* <Editor
-            toolbarStyle={{
-              border: "1px solid #ccc",
-              zIndex: 1000,
-            }}
-    
-            editorStyle={{
-              border: "1px solid #ccc",
-              lineHeight: '75%',
-              minHeight: "200px",
-              padding: "10px",
-              
-            }}
 
-            editorState={blog.content}
-            onEditorStateChange={(content) =>
-              setBlog({ ...blog, content: content })
-            }
-           
-          /> */}
         </div>
 
         <div className="flex gap-5">

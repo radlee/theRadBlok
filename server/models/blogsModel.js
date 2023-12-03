@@ -18,10 +18,10 @@ const blogSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    file: {
+    imgpath: {
       type: String,
       required: true
-  },
+    },
     canShare: {
       type: Boolean,
       require: true,
