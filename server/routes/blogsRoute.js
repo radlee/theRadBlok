@@ -302,8 +302,10 @@ router.get(
   }
 );
 
-__dirname = path.resolve();
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+const rootDir = path.resolve();
+console.log("Current working directory:", rootDir);
+
+app.use('/uploads', express.static(path.join(rootDir, 'uploads')));
 
 
 
