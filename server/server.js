@@ -56,11 +56,15 @@ app.use('/uploads', express.static(path.join(rootDir, 'uploads')));
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
+  const clientBuildPath = path.join(rootDir, "/client/build");
+  app.use(express.static(clientBuildPath));
+  console.log("Static files served from:", clientBuildPath);
+
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(rootDir, "client", "build", "index.html"));
   });
 }
+
 
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
