@@ -16,7 +16,7 @@ const server = require("http").createServer(app);
 
 const imgconfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(process.cwd(), 'uploads'));
+    cb(null, path.join(process.cwd(), '../uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, `image-${Date.now()}.${file.originalname}`)
