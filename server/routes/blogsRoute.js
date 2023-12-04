@@ -30,7 +30,7 @@ const server = require("http").createServer(app);
 
 const imgconfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploads')
+    cb(null, path.join(__dirname, 'uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, `image-${Date.now()}.${file.originalname}`)
@@ -63,7 +63,8 @@ console.log("The origin :: BlogsRoute.js - " , process.env.ORIGIN)
 
 // add new blog
 router.post("/add-blog", upload.single('photo'), authMiddleware, async (req, res) => {
-   const upload = await cloudinary.uploader.upload(req.file.path);
+   const upload = await cloudinary.uploader.upload(path.join(__dirname, 'uploads', req.file.filename));
+
    console.log("Upload == :", upload)
   try {
     const newBlog = new Blog({
@@ -315,8 +316,8 @@ router.get(
   }
 );
 
-// __dirname = path.resolve();
-// app.use('/uploads', express.static(path.join(__dirname,'/uploads')));
+__dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname,'uploads')));
 
 
 

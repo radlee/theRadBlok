@@ -48,7 +48,7 @@ io.on("connection", (socket) => {
 });
 
 __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
