@@ -14,20 +14,6 @@ const app = express();
 const path = require("path");
 const server = require("http").createServer(app);
 
-// const handleImage = (e) => {
-//   const file = e.target.files[0];
-//   setFileToBase(file);
-//   console.log(file);
-// };
-
-// const setFileToBase = (file) => {
-//   const reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   reader.onloadend = () => {
-//     setImage(reader.result)
-//   }
-// }
-
 const imgconfig = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, 'uploads'));
@@ -317,7 +303,8 @@ router.get(
 );
 
 __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname,'uploads')));
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+
 
 
 
