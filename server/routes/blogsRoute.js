@@ -16,7 +16,7 @@ const server = require("http").createServer(app);
 
 const imgconfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(process.cwd(), '../uploads'));
+    cb(null, path.join(process.cwd(), 'uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, `image-${Date.now()}.${file.originalname}`)
@@ -302,10 +302,8 @@ router.get(
   }
 );
 
-const rootDir = path.resolve();
-console.log("Current working directory:", rootDir);
-
-app.use('/uploads', express.static(path.join(rootDir, 'uploads')));
+__dirname = path.resolve();
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 
 

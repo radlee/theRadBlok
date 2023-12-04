@@ -47,24 +47,16 @@ io.on("connection", (socket) => {
     });
 });
 
-const rootDir = path.resolve();
-console.log("Current working directory:", rootDir);
-
-app.use('/uploads', express.static(path.join(rootDir, 'uploads')));
-
-
+__dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
-  const clientBuildPath = path.join(rootDir, "/client/build");
-  app.use(express.static(clientBuildPath));
-  console.log("Static files served from:", clientBuildPath);
-
+  app.use(express.static(path.join(__dirname, "/client/build")));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(rootDir, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
-
 
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
