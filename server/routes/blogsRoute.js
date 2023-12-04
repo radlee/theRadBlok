@@ -302,9 +302,8 @@ router.get(
   }
 );
 
-__dirname = path.resolve();
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 
 
