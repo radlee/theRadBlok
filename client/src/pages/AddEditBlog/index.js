@@ -111,6 +111,7 @@ function AddEditBlog() {
         />
         <input
           type="file"
+          name="photo"
           onChange={(e) => setBlog({ ...blog, file: e.target.files[0] })}
         />
         <textarea
