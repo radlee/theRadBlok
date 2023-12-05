@@ -5,8 +5,6 @@ import Button from "../../components/Button";
 import { toast } from "react-hot-toast";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { DeleteBlog, GetBlogById } from "../../apicalls/blogs";
-import ReactHtmlParser from "react-html-parser";
-import draftToHtml from "draftjs-to-html";
 import moment from "moment";
 import {
   AddComment,
@@ -178,7 +176,7 @@ function BlogDescription() {
         <hr />
         <h1 className="desc font-bold">{blog?.description}</h1>
         <hr />
-        <div className="gap-5">{ReactHtmlParser(draftToHtml(JSON.parse(blog?.content)))}</div>
+        <div className="gap-5" dangerouslySetInnerHTML={{ __html: blog?.content }}></div>
 
         <hr />
 

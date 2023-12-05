@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState, convertFromRaw } from "draft-js";
 import Button from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { AddNewBlog, GetBlogById, UpdateBlog } from "../../apicalls/blogs";
@@ -71,9 +69,6 @@ function AddEditBlog() {
       if (response.success) {
         setBlog({
           ...response.data,
-          content: EditorState.createWithContent(
-            convertFromRaw(JSON.parse(response.data.content))
-          ),
         });
       } else {
         toast.error(response.message);
