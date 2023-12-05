@@ -52,11 +52,11 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
+  // Assuming the 'client/build' folder is at the root of the project
+  app.use(express.static(path.join(process.cwd(), 'client', 'build')));
 
-  // Keep the existing wildcard route
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(process.cwd(), 'client', 'build', 'index.html'));
   });
 }
 
