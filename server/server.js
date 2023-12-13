@@ -32,6 +32,8 @@ const io = require("socket.io")(server, {
   },
 });
 
+
+
 console.log("The origin :: server.js - " , process.env.ORIGIN)
 
 
@@ -47,16 +49,18 @@ io.on("connection", (socket) => {
     });
 });
 
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
-  // Assuming the 'client/build' folder is at the root of the project
-  app.use(express.static(path.join(process.cwd(), 'client', 'build')));
+  // Serve static files from 'client/build' and 'server/uploads'
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
+
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
   });
 }
 

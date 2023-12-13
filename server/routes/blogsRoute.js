@@ -43,6 +43,8 @@ const io = require("socket.io")(server, {
   },
 });
 
+
+
 console.log("The origin :: BlogsRoute.js - " , process.env.ORIGIN)
 
 
@@ -303,7 +305,8 @@ router.get(
 );
 
 
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
 
 
 
