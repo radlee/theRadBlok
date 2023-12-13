@@ -51,16 +51,17 @@ io.on("connection", (socket) => {
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-
 // render deployment
 if (process.env.NODE_ENV === "production") {
   // Serve static files from 'client/build' and 'server/uploads'
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-app.use('/uploads', express.static(path.join(__dirname, 'server', 'uploads')));
+  const buildPath = path.join(__dirname, 'client', 'build');
+  const uploadsPath = path.join(__dirname, 'server', 'uploads');
 
+  app.use(express.static(buildPath));
+  app.use('/uploads', express.static(uploadsPath));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(buildPath, 'index.html'));
   });
 }
 
