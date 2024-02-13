@@ -11,9 +11,14 @@ const blogActionsRoute = require("./routes/blogActionsRoute");
 
 const path = require("path");
 
-app.use(express.json({limit: "50mb", extended: true}))
-app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}))
+// Add CSP middleware here
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com");
+  next();
+});
 
+app.use(express.json({ limit: "50mb", extended: true }));
+app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 app.use(express.json());
 
 app.use("/api/users", usersRoute);
