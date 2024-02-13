@@ -13,17 +13,12 @@ import {
 } from "../redux/usersSlice";
 
 import { io } from "socket.io-client";
-<<<<<<< HEAD
 
 const socketUrl = process.env.REACT_APP_ENV === "production"
   ? "https://radblok.onrender.com"
   : "http://localhost:4001";
 
 const socket = io(socketUrl);
-=======
-const socket = io("http://localhost:3000"); //3000 Works
-// const socket = io("https://radblok.onrender.com");
->>>>>>> updates
 
 function ProtectedRoute({ children }) {
   const { currentUser, unreadCount } = useSelector(
@@ -77,7 +72,6 @@ function ProtectedRoute({ children }) {
     if (currentUser) {
       socket.emit("join", currentUser?._id);
     }
-
     socket.off("newNotification").on("newNotification", (data) => {
       toast((t) => (
         <span className="bg-white text-black p-2 rounded ">
