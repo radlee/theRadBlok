@@ -34,8 +34,6 @@ const io = require("socket.io")(server, {
   },
 });
 
-console.log("The origin :: server.js - " , process.env.ORIGIN)
-
 io.on("connection", (socket) => {
   // join room
   socket.on("join", (userId) => {
