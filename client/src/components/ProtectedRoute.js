@@ -11,8 +11,14 @@ import {
   SetSocket,
   SetUnreadCount,
 } from "../redux/usersSlice";
+
 import { io } from "socket.io-client";
-const socket = io("https://radblok.onrender.com/");
+
+const socketUrl = process.env.REACT_APP_ENV === "production"
+  ? "https://radblok.onrender.com"
+  : "http://localhost:4001";
+
+const socket = io(socketUrl);
 
 function ProtectedRoute({ children }) {
   const { currentUser, unreadCount } = useSelector(
