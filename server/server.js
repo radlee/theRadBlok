@@ -51,8 +51,10 @@ io.on("connection", (socket) => {
 __dirname = path.resolve();
 
 // render deployment
+const buildPath = path.join(__dirname, "build");
+
+// render deployment
 if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "build"); // Assuming your build directory is named "build"
   app.get("*", (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
