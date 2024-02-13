@@ -5,8 +5,6 @@ import Button from "../../components/Button";
 import { toast } from "react-hot-toast";
 import { HideLoading, ShowLoading } from "../../redux/loadersSlice";
 import { DeleteBlog, GetBlogById } from "../../apicalls/blogs";
-import ReactHtmlParser from "react-html-parser";
-import draftToHtml from "draftjs-to-html";
 import moment from "moment";
 import {
   AddComment,
@@ -87,7 +85,7 @@ function BlogDescription() {
       if (isAlreadyLiked) {
         socket.emit("newNotification", {
           userId: blog?.user?._id,
-          title: `${currentUser?.name} unliked your blog ${blog?.title}`,
+          title: `<strong>${currentUser?.name} </strong> unliked your blog ${blog?.title}`,
         });
 
         response = await UnlikeBlog({
@@ -102,7 +100,7 @@ function BlogDescription() {
       } else {
         socket.emit("newNotification", {
           userId: blog?.user?._id,
-          title: `${currentUser?.name} liked your blog ${blog?.title}`,
+          title: `<strong>${currentUser?.name}</strong> liked your blog ${blog?.title}`,
         });
 
         response = await LikeBlog({
@@ -110,7 +108,7 @@ function BlogDescription() {
           user: currentUser._id,
           notificationPayload: {
             user: blog?.user?._id,
-            title: `${currentUser?.name} liked your blog ${blog?.title}`,
+            title: `${currentUser?.name}  blog ${blog?.title}`,
             onClick: `/blog-desc/${blog?._id}`,
           },
         });
@@ -178,7 +176,7 @@ function BlogDescription() {
         <hr />
         <h1 className="desc font-bold">{blog?.description}</h1>
         <hr />
-        <div className="gap-5">{ReactHtmlParser(draftToHtml(JSON.parse(blog?.content)))}</div>
+        <div className="gap-5" dangerouslySetInnerHTML={{ __html: blog?.content }}></div>
 
         <hr />
 

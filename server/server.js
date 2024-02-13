@@ -2,16 +2,17 @@ const express = require("express");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 const app = express();
+const cors = require('cors');
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
 const usersRoute = require("./routes/usersRoute");
 const blogsRoute = require("./routes/blogsRoute");
 const blogActionsRoute = require("./routes/blogActionsRoute");
 
-app.use(express.json({ limit: "50mb", extended: true }));
-app.use(
-  express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
-);
+const path = require("path");
+
+app.use(express.json({limit: "50mb", extended: true}))
+app.use(express.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}))
 
 app.use(express.json());
 
@@ -33,6 +34,8 @@ const io = require("socket.io")(server, {
   },
 });
 
+console.log("The origin :: server.js - " , process.env.ORIGIN)
+
 io.on("connection", (socket) => {
   // join room
   socket.on("join", (userId) => {
@@ -50,9 +53,8 @@ __dirname = path.resolve();
 
 // render deployment
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(buildPath, 'index.html'));
   });
 }
 

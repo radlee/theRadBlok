@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-import "./../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { Editor } from "react-draft-wysiwyg";
-
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import React, { useEffect, useState } from "react";
+// import "./../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState, convertFromRaw } from "draft-js";
 import Button from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { AddNewBlog, GetBlogById, UpdateBlog } from "../../apicalls/blogs";
@@ -17,32 +15,41 @@ function AddEditBlog() {
   const dispatch = useDispatch();
   const [blog, setBlog] = React.useState({
     title: "",
-    content: EditorState.createEmpty(),
+    content: '',
     description: "",
+    file: "",
     canShare: false,
     canComment: false,
     canLike: false,
   });
 
+  // console.log("Blog : title: ", blog.title)
+  // console.log("Blog : file: ", blog.file)
+ 
   const onSave = async () => {
     try {
       dispatch(ShowLoading());
-      let response = null
-      if(params.id)
-      {
-        response = await UpdateBlog({
-          ...blog,
-          content: JSON.stringify(convertToRaw(blog.content.getCurrentContent())),
-          user: currentUser._id,
-          _id: params.id
-        });
-      }else{
-        response = await AddNewBlog({
-          ...blog,
-          content: JSON.stringify(convertToRaw(blog.content.getCurrentContent())),
-          user: currentUser._id,
-        });
+      const formData = new FormData();
+      formData.append('title', blog.title);
+      formData.append('content', blog.content);
+      formData.append('description', blog.description);
+      formData.append('user', currentUser._id);
+      formData.append('photo', blog.file);  // Use 'file' as the key
+  
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
       }
+      let response = null;
+      if (params.id) {
+        formData.append('_id', params.id);
+        response = await UpdateBlog(formData, config);
+      } else {
+        response = await AddNewBlog(formData, config);
+        console.log("The Response :: ", response)
+      }
+  
       if (response.success) {
         toast.success(response.message);
         navigate("/");
@@ -55,6 +62,7 @@ function AddEditBlog() {
       toast.error(error.message);
     }
   };
+  
 
   const getData = async () => {
     try {
@@ -76,16 +84,6 @@ function AddEditBlog() {
       toast.error(error.message);
     }
   };
-
-  function uploadImageCallBack(file) {
-    return new Promise(
-      (resolve, reject) => {
-        const reader = new FileReader(); // eslint-disable-line no-undef
-        reader.onload = e => resolve({ data: { link: e.target.result } });
-        reader.onerror = e => reject(e);
-        reader.readAsDataURL(file);
-      });
-  }
 
   useEffect(() => {
     if(params.id)
@@ -111,6 +109,10 @@ function AddEditBlog() {
           value={blog.title}
           onChange={(e) => setBlog({ ...blog, title: e.target.value })}
         />
+        <input
+          type="file"
+          onChange={(e) => setBlog({ ...blog, file: e.target.files[0] })}
+        />
         <textarea
           placeholder="Description"
           value={blog.description}
@@ -121,31 +123,14 @@ function AddEditBlog() {
         <div>
           <p className="text-red warning"><em>Please upload Images less that 50MB</em></p>
           <br />
-          <Editor
-            toolbarStyle={{
-              border: "1px solid #ccc",
-              zIndex: 1000,
-            }}
-            toolbar={{
-              image: {
-                uploadCallback: uploadImageCallBack,
-                previewImage: true,
-              },
-            }}
-            editorStyle={{
-              border: "1px solid #ccc",
-              lineHeight: '75%',
-              minHeight: "200px",
-              padding: "10px",
-              
-            }}
 
-            editorState={blog.content}
-            onEditorStateChange={(content) =>
-              setBlog({ ...blog, content: content })
-            }
-           
-          />
+          <textarea
+          placeholder="Conte"
+          value={blog.content}
+          onChange={(e) =>  setBlog({ ...blog, content: e.target.value })}
+          rows={5}
+        />
+
         </div>
 
         <div className="flex gap-5">
