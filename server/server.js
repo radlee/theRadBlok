@@ -20,40 +20,38 @@ app.use("/api/users", usersRoute);
 app.use("/api/blogs", blogsRoute);
 app.use("/api/blog-actions", blogActionsRoute);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 4001;
 const server = require("http").createServer(app);
 
 // socket io
 const io = require("socket.io")(server, {
   cors: {
-    origin: process.env.ORIGIN,
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://radblok.onrender.com"
+        : "http://localhost:3000",
     methods: ["GET", "POST"],
-    credentials: true,
   },
 });
 
 console.log("The origin :: server.js - " , process.env.ORIGIN)
 
 io.on("connection", (socket) => {
-    // join room
-    socket.on("join", (userId) => {
-        socket.join(userId);
-    });
+  // join room
+  socket.on("join", (userId) => {
+    socket.join(userId);
+  });
 
-    // listen for new notification
-    socket.on("newNotification", (notification) => {
-        socket.to(notification.userId).emit("newNotification", notification);
-    });
+  // listen for new notification
+  socket.on("newNotification", (notification) => {
+    socket.to(notification.userId).emit("newNotification", notification);
+  });
 });
 
-// Serve static files from 'client/build' and 'uploads'
-const buildPath = path.join(__dirname, 'client', 'build');
-const uploadsPath = path.join(__dirname, 'uploads');
+const path = require("path");
+__dirname = path.resolve();
 
-app.use(express.static(buildPath));
-app.use('/uploads', express.static(uploadsPath));
-
-// Render deployment
+// render deployment
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
