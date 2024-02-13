@@ -48,7 +48,6 @@ io.on("connection", (socket) => {
   });
 });
 
-const path = require("path");
 __dirname = path.resolve();
 
 // render deployment
