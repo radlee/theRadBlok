@@ -28,7 +28,7 @@ app.use("/api/blog-actions", blogActionsRoute);
 // Add this after all other routes
 // render deployment
 if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "build");
+  const buildPath = path.join(__dirname, "client", "build"); // Adjust the path accordingly
   app.get("*", (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
@@ -61,11 +61,6 @@ io.on("connection", (socket) => {
 });
 
 __dirname = path.resolve();
-
-// render deployment
-const buildPath = path.join(__dirname, "build");
-
-
 
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
