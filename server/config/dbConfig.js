@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.mongo_url);
+// mongoose.connect(process.env.mongo_url);
 // mongoose.connect("mongodb+srv://radlee:Leander247365@radblok.ubznfgv.mongodb.net/");
 mongoose.connect("mongodb+srv://radlee:Leander247365@radblok.ubznfgv.mongodb.net/radblok");
 
