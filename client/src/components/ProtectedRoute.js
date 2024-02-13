@@ -72,7 +72,6 @@ function ProtectedRoute({ children }) {
     if (currentUser) {
       socket.emit("join", currentUser?._id);
     }
-
     socket.off("newNotification").on("newNotification", (data) => {
       toast((t) => (
         <span className="bg-white text-black p-2 rounded ">
