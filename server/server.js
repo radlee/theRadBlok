@@ -28,6 +28,7 @@ app.use("/api/blog-actions", blogActionsRoute);
 // Add this after all other routes
 // render deployment
 if (process.env.NODE_ENV === "production") {
+  const buildPath = path.join(__dirname, "build");
   app.get("*", (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
