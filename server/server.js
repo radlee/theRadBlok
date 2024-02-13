@@ -25,6 +25,14 @@ app.use("/api/users", usersRoute);
 app.use("/api/blogs", blogsRoute);
 app.use("/api/blog-actions", blogActionsRoute);
 
+// Add this after all other routes
+// render deployment
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+  });
+}
+
 const port = process.env.PORT || 4001;
 const server = require("http").createServer(app);
 
@@ -56,12 +64,7 @@ __dirname = path.resolve();
 // render deployment
 const buildPath = path.join(__dirname, "build");
 
-// render deployment
-if (process.env.NODE_ENV === "production") {
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-  });
-}
+
 
 server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
